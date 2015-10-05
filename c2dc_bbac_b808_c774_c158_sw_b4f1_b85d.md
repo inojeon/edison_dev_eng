@@ -6,7 +6,7 @@ EDISON 시스템과 연동을 위해서는 몇 가지 지켜주어야 할 사항
 
 ### 개발 가능 언어
 
-EDISON C, C++, fortran, python 등등 
+C++, fortran, java, python 등등 다양한 언어를 지원하며, mpi, openmp등의 병렬처리 라이브러리도 지원하고 있다. 
 
 ### 실행 방식 설정 
 
@@ -29,8 +29,6 @@ data2 = 5 ;
 - main.c 소스 코드
 
 ```C
-// main.c
-
 #include <stdio.h>
 #include "sub1.h"
 #include "sub2.h"
@@ -63,11 +61,9 @@ int main(int argc, const char *argv[])
 
         return 0;
 }
-
 ``` 
 
-- 실행 커멘드 
-``` ./a.out -inp input.dat ```  
+- 컴파일 후 ``` ./a.out -inp input.dat ``` 로 실행시 정상적으로 동작함을 확인 할 수 있다.  
 
 - **[옵션]**은 꼭 설정 해주어야 한다.
 - 소스코드에서 **[인풋 파일]** 처리를 위해 파일 경로 버퍼에 저장하는 경우, 버퍼 공간을 512byte 정도로 넉넉하게 잡아주어야 한다. 
@@ -75,6 +71,13 @@ int main(int argc, const char *argv[])
 
 ### 결과 파일 저장
 - 결과 파일은 실행파일 디렉토리에 **result** 폴더를 생성하여 그 안에 저장되어야 한다.  
+- 위에 예제에서 처럼 system 명령어를 이용해 result 폴더를 생성하고, 결과 파일을 쓰면된다.
+```C
+        system("rm –rf ./result"); 		//결과파일을 저장하기 위한 폴더 생성
+        system("mkdir ./result");
+        fp_out=fopen("./result/result.dat","wt");	//결과 파일 생성
+        fprintf(fp_out,"result = %d", data1+data2);	//결과 파일 저장
+        fclose(fp_out);
 
-## SW 실행 방식 설정
+```
 
