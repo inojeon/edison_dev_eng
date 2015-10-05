@@ -18,9 +18,12 @@ EDISON C, C++, fortran
 
         ex)  ./run.x –inp data.inp -mesh mesh.msh 
  
-- 인풋 파일 1개를 받는 C 예제 코드
+- data1, data2 2개의 변수를 가지는 인풋 파일 1개를 받는 C 예제 코드
+ - 
 
 ```C
+// main.c
+
 #include <stdio.h>
 #include "sub1.h"
 #include "sub2.h"
