@@ -6,7 +6,7 @@ EDISON 시스템과 연동을 위해서는 몇 가지 지켜주어야 할 사항
 
 ### 개발 가능 언어
 
-EDISON C, C++, fortran
+EDISON C, C++, fortran, python 등등 
 
 ### 실행 방식 설정 
 
@@ -20,13 +20,14 @@ EDISON C, C++, fortran
  
 - data1, data2 2개의 변수를 가지는 인풋 파일 1개를 받는 C 예제 코드
  
-input.dat 파일 구조
+- input.dat 파일 구조
 ```
 data1 = 10 ;
 data2 = 5 ;
 ```
 
-main.c 소스 코드
+- main.c 소스 코드
+
 ```C
 // main.c
 
