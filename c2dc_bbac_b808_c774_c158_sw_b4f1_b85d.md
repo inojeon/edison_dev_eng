@@ -72,6 +72,7 @@ int main(int argc, const char *argv[])
 ### 결과 파일 저장
 - 결과 파일은 실행파일 디렉토리에 **result** 폴더를 생성하여 그 안에 저장되어야 한다.  
 - 위에 예제에서 처럼 system 명령어를 이용해 result 폴더를 생성하고, 결과 파일을 쓰면된다.
+
 ```C
         system("rm –rf ./result"); 		//결과파일을 저장하기 위한 폴더 생성
         system("mkdir ./result");
