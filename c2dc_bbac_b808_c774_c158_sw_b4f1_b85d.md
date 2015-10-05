@@ -20,7 +20,7 @@ EDISON C, C++, fortran
  
 - 인풋 파일 1개를 받는 C 예제 코드
 
-```C
+```C++
 #include <stdio.h>
 #include "sub1.h"
 #include "sub2.h"
