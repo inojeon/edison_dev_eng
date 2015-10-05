@@ -8,7 +8,7 @@
  - [EDISON 나노물리](https://www.edison.re.kr/web/nano)
  - [EDISON 계산화학](https://www.edison.re.kr/web/chem)
  - [EDISON 구조동역학](https://www.edison.re.kr/web/csd)
- - [EDISON 전산설계](https://www.edison.re.kr/web/design)- 
+ - [EDISON 전산설계](https://www.edison.re.kr/web/design)
 
 - 승인 대기 
 - 승인 완료 (승인 결과는 홈페이지  워크스페이스 페이지에서 확인 가능)
