@@ -19,8 +19,14 @@ EDISON C, C++, fortran
         ex)  ./run.x –inp data.inp -mesh mesh.msh 
  
 - data1, data2 2개의 변수를 가지는 인풋 파일 1개를 받는 C 예제 코드
- - 
+ 
+input.dat 파일 구조
+```
+data1 = 10 ;
+data2 = 5 ;
+```
 
+main.c 소스 코드
 ```C
 // main.c
 
