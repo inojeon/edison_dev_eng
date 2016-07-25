@@ -16,12 +16,17 @@ EDISON 플랫폼을 활용하여 웹 기반 시뮬레이션 서비스를 하기 
 
 EDISON에서 시뮬레이션 SW 실행 시 1개 이상의 파일을 입력 받을 수 있고, 이를 구분하기 위해 각각 다른 커맨드 옵션(포트 명)을 통해 입력 파일을 받을 수 있도록 프로그래밍 되어야 한다. 
 
-
 #### Case 1. 입력 파일이 1개인 경우  
 
-본 예제는 EDISON 입력 형식을 맞춘 예제이며, 커맨드 옵션(포트 명)이 "-inp"인 입력 파일을 읽어와 path 정보를 출력하는 코드이다. 
+본 예제는 실행 파일이 **a.out**이며, 커맨드 옵션(포트 명)이 "-inp"인 입력 파일을 읽어와 path 정보를 출력하는 코드이다.
 
-EDISON 포털에서 앱 등록시 이와 관련된 정보를 입력해 주어야 한다. 
+ - 리눅스 상에서 실행 커맨드 ::  **./a.out -inp /home/user1/data/sample1.dat** 
+
+
+EDISON 포털에서 앱 등록시 작성된 입력 포트 정보는 아래 그림과 같다.  
+
+
+![입력 파일이 1개인 경우 입력포트 설정 예제](sample1.png)
 
 
 ##### FORTRAN Code example
@@ -31,7 +36,7 @@ EDISON 포털에서 앱 등록시 이와 관련된 정보를 입력해 주어야
 
       CHARACTER(len=16) :: cmd_option_name
       CHARACTER(len=512) :: inputdeck
-      INTEGER :: num_of_args, i, io_status
+      INTEGER :: num_of_args, i
       LOGICAL :: args_error_flag = .false.
 
       num_of_args = iargc()
@@ -60,5 +65,39 @@ EDISON 포털에서 앱 등록시 이와 관련된 정보를 입력해 주어야
       end program
 
 ```
+######주요 변수 설명 
+ - ```cmd_option_name``` : 커맨드 옵션(포트 명)을 저장하는 크기가 16인 character형 배열로 선언 하였다. 
+ - ```inputdeck``` : 입력 파일의 path를 저장하는 배열로 크기는 512인 characcter형 배열을 선언 하였다.
+ - ```num_of_args``` : 실행 시 같이 입력된 argument의 개수를 저장하는 변수 
+ - ```args_error_flag = .false.``` : 커맨드 옵션(포트 명)이 잘못 입력된 경우, 이 변수의 값을 ```.true.```로 변경
 
+
+######주요 코드 설명
+
+```fortran
+      ...
+      num_of_args = iargc()
+      ...
+```
+ - [iargc()](https://gcc.gnu.org/onlinedocs/gfortran/IARGC.html) 함수를 이용하여 입력된 argument의 개수를 num_of_args 변수에 저장 
+
+```fortran
+      ...
+      do i=1, num_of_args, 2   
+            call getarg(i,cmd_option_name)
+
+            if( cmd_option_name .eq. "-inp") then
+                  call getarg(i+1,inputdeck)
+            else
+                  args_error_flag = .true.
+                  write (*,*) "ERROR: INVALID COMAND OPTION: " ,
+     +            cmd_option_name
+            endif
+      enddo
+      ...
+```
+- do loop를 이용해 num_of_args 개수 까지 i 값을 2씩 증가하면서 loop 문 수행
+- [getarg()](https://gcc.gnu.org/onlinedocs/gfortran/GETARG.html#GETARG) 함수를 이용해 i번째 arument 값을 ```cmd_option_name``` 변수에 저장
+- 저장한 ```cmd_option_name``` 값이 **-inp**와 같은지 확인하여 같으면, i+1번째 arument 값을 읽어서 ```inputdeck``` 배열에 저장
+- ```cmd_option_name``` 값이 **-inp**와 다르면, ```args_error_flag``` 를 ```.false.```로 변경하고 잘못 입력한 커맨드 옵션을 출력
 
