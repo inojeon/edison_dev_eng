@@ -225,5 +225,14 @@ Inputdeck 작성 시 입력 파일을 생성하는 규칙을 정할 수 있으�
 
 #### Case 3.1. Inputdeck case study 1
 
-![case_1](스크린샷 2016-07-26 오후 6.53.39.png)
+![case1](스크린샷 2016-07-26 오후 7.00.37.png)
+
+| INPUTDECK key | value |
+| -- | -- |
+| value delimiter | SPACE |
+| line  delimiter | NULL |
+| Vector vracket | SQUARE_SPACE |
+| Vector delimiter | SPACE |
+
+
 
