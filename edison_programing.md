@@ -61,8 +61,6 @@ EDISON에서 시뮬레이션 SW 실행 시 1개 이상의 파일을 입력 받�
 
       write (*,*) "Input file path : ", inputdeck
 
-
-
       end program
 
 ```
@@ -77,19 +75,19 @@ EDISON에서 시뮬레이션 SW 실행 시 1개 이상의 파일을 입력 받�
 
 ```fortran
       ...
-      num_of_args = iargc()
+[1]   num_of_args = iargc()
       ...
 ```
- - [iargc()](https://gcc.gnu.org/onlinedocs/gfortran/IARGC.html) 함수를 이용하여 입력된 argument의 개수를 num_of_args 변수에 저장 
+ 1. [iargc()](https://gcc.gnu.org/onlinedocs/gfortran/IARGC.html) 함수를 이용하여 입력된 argument의 개수를 num_of_args 변수에 저장 
 
 ```fortran
       ...
-      do i=1, num_of_args, 2   
-            call getarg(i,cmd_option_name)
+[1]   do i=1, num_of_args, 2   
+[2]         call getarg(i,cmd_option_name)
 
-            if( cmd_option_name .eq. "-inp") then
+[3]         if( cmd_option_name .eq. "-inp") then
                   call getarg(i+1,inputdeck)
-            else
+[4]         else
                   args_error_flag = .true.
                   write (*,*) "ERROR: INVALID COMAND OPTION: " ,
      +            cmd_option_name
@@ -97,10 +95,11 @@ EDISON에서 시뮬레이션 SW 실행 시 1개 이상의 파일을 입력 받�
       enddo
       ...
 ```
-- do loop를 이용해 num_of_args 개수 까지 i 값을 2씩 증가하면서 loop 문 수행
-- [getarg()](https://gcc.gnu.org/onlinedocs/gfortran/GETARG.html#GETARG) 함수를 이용해 i번째 arument 값을 ```cmd_option_name``` 변수에 저장
-- 저장한 ```cmd_option_name``` 값이 **-inp**와 같은지 확인하여 같으면, i+1번째 arument 값을 읽어서 ```inputdeck``` 배열에 저장
-- ```cmd_option_name``` 값이 **-inp**와 다르면, ```args_error_flag``` 를 ```.false.```로 변경하고 잘못 입력한 커맨드 옵션을 출력
+1. do loop를 이용해 num_of_args 개수 까지 i 값을 2씩 증가하면서 loop 문 수행
+  - 예제에서 [iargc()](https://gcc.gnu.org/onlinedocs/gfortran/IARGC.html) 함수로 받은 값이 2 이므로 loop문이 한번만 수행 됨 
+2. [getarg()](https://gcc.gnu.org/onlinedocs/gfortran/GETARG.html#GETARG) 함수를 이용해 i번째 arument 값을 ```cmd_option_name``` 변수에 저장
+3. 저장한 ```cmd_option_name``` 값이 **-inp**와 같은지 확인하여 같으면, i+1번째 arument 값을 읽어서 ```inputdeck``` 배열에 저장
+4. ```cmd_option_name``` 값이 **-inp**와 다르면, ```args_error_flag``` 를 ```.false.```로 변경하고 잘못 입력한 커맨드 옵션을 출력
 
 
 #### Case 2. 입력 파일이 2개인 경우  
@@ -172,18 +171,18 @@ EDISON에서 시뮬레이션 SW 실행 시 1개 이상의 파일을 입력 받�
       num_of_args = iargc()
       ...
 ```
- - [iargc()](https://gcc.gnu.org/onlinedocs/gfortran/IARGC.html) 함수를 이용하여 입력된 argument의 개수를 num_of_args 변수에 저장 
+ - [iargc()](https://gcc.gnu.org/onlinedocs/gfortran/IARGC.html) 함수를 이용하여 입력된 argument의 개수를 ```num_of_args``` 변수에 저장 
 
 ```fortran
       ...
-      do i=1, num_of_args, 2   
-            call getarg(i,cmd_option_name)
+[1]   do i=1, num_of_args, 2   
+[2]         call getarg(i,cmd_option_name)
 
-            if( cmd_option_name .eq. "-inp") then
+[3]         if( cmd_option_name .eq. "-inp") then
                   call getarg(i+1,inputdeck)
-            else if ( cmd_option_name .eq. "-mesh") then
+[4]         else if ( cmd_option_name .eq. "-mesh") then
                   call getarg(i+1,inputmesh)
-            else
+[5]         else
                   args_error_flag = .true.
                   write (*,*) "ERROR: INVALID COMAND OPTION: " ,
      +            cmd_option_name
@@ -191,7 +190,11 @@ EDISON에서 시뮬레이션 SW 실행 시 1개 이상의 파일을 입력 받�
       enddo
       ...
 ```
-- do loop를 이용해 num_of_args 개수 까지 i 값을 2씩 증가하면서 loop 문 수행
-- [getarg()](https://gcc.gnu.org/onlinedocs/gfortran/GETARG.html#GETARG) 함수를 이용해 i번째 arument 값을 ```cmd_option_name``` 변수에 저장
-- 저장한 ```cmd_option_name``` 값이 **-inp**와 같은지 확인하여 같으면, i+1번째 arument 값을 읽어서 ```inputdeck``` 배열에 저장
-- ```cmd_option_name``` 값이 **-inp**와 다르면, ```args_error_flag``` 를 ```.false.```로 변경하고 잘못 입력한 커맨드 옵션을 출력
+1. do loop를 이용해 num_of_args 개수 까지 i 값을 2씩 증가하면서 loop 문 수행
+  - 예제에서 [iargc()](https://gcc.gnu.org/onlinedocs/gfortran/IARGC.html) 함수로 받은 값이 4 이므로 loop문이 두번 수행 됨 
+2. [getarg()](https://gcc.gnu.org/onlinedocs/gfortran/GETARG.html#GETARG) 함수를 이용해 i번째 arument 값을 ```cmd_option_name``` 변수에 저장
+3. 저장한 ```cmd_option_name```  값이 **-inp**와 같은지 확인하여 같으면, i+1번째 arument 값을 읽어서 ```inputdeck``` 배열에 저장. 
+4. 저장한 ```cmd_option_name```  값이 **-mesh**와 같은지 확인하여 같으면, i+1번째 arument 값을 읽어서 ```inputmesh``` 배열에 저장
+5. ```cmd_option_name``` 값이 **-inp**와 **-mesh** 같지 않으면, ```args_error_flag``` 를 ```.false.```로 변경하고 잘못 입력한 커맨드 옵션을 출력
+
+
