@@ -223,21 +223,7 @@ Inputdeck 작성 시 입력 파일을 생성하는 규칙을 정할 수 있으�
   - ```Vector bracket``` : 벡터 변수 사용시 괄호의 종류를 선택할 수 있다. ```SQUARE```, ```ROUND```, ```SQUARE_SPACE```, ```ROUND_SPACE``` 선택 가능하며 ```_SPACE```가 붙은 경우에는 괄호와 벡터 원소 사이에 space가 들어가 있는 상태로 생성된다.
  - ```Vector Delimiter``` : 벡터 원소간 구분해 주는 기호를 설정 ```COMMA```와 ```SPACE``` 중에 하나를 설정할 수 있다. 
 
+#### Case 3.1. Inputdeck case study 1
 
+![case_1](스크린샷 2016-07-26 오후 6.53.39.png)
 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
