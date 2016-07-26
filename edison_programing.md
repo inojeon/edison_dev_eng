@@ -66,8 +66,8 @@ EDISON 포털에서 앱 등록시 작성된 입력 포트 정보는 아래 그�
 
 ```
 ######주요 변수 설명 
- - ```cmd_option_name``` : 커맨드 옵션(포트 명)을 저장하는 크기가 16인 character형 배열로 선언 하였다. 
- - ```inputdeck``` : 입력 파일의 path를 저장하는 배열로 크기는 512인 characcter형 배열을 선언 하였다.
+ - ```cmd_option_name``` : 커맨드 옵션(포트 명)을 저장하는 크기가 16인 character형 배열로 선언
+ - ```inputdeck``` : 입력 파일의 path를 저장하는 배열로 크기는 512인 characcter형 배열을 선언
  - ```num_of_args``` : 실행 시 같이 입력된 argument의 개수를 저장하는 변수 
  - ```args_error_flag = .false.``` : 커맨드 옵션(포트 명)이 잘못 입력된 경우, 이 변수의 값을 ```.true.```로 변경
 
