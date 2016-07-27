@@ -245,11 +245,92 @@ LIST a
 VECTOR1 [ 1 0 0 ]
 ```
 #####FORTRAN code example
-위 케이스에서 생성된 입력 파일을 읽어와 같은 이름의 변수를 생성해 저장하는 코드이다. 
 
+```fortran
+      program sample
+
+      CHARACTER(len=16) :: cmd_option_name , value_name , temp
+      CHARACTER(len=512) :: inputdeck, inputmodel, inputrestart
+      INTEGER :: num_of_args, i, io_status
+      LOGICAL :: args_error_flag = .false.
+
+      INTEGER INT1
+      DOUBLE PRECISION REAL1
+      CHARACTER LIST, tempchar
+      INTEGER :: VEC(3)
+
+      num_of_args = iargc()
+
+      do i=1, num_of_args, 2
+            call getarg(i,cmd_option_name)
+
+            if( cmd_option_name .eq. "-inp") then
+                  call getarg(i+1,inputdeck)
+                  WRITE (*,*)  inputdeck
+            else
+                  args_error_flag = .true.
+                  WRITE (*,*) "ERROR: INVALID COMAND OPTION: " ,
+     +            cmd_option_name
+            endif
+      enddo
+
+      if ( args_error_flag .eqv. .true. ) then
+            WRITE(*,*) "CHECK YOUR COMAND OPTION"
+            stop
+      endif
+
+      inputdeck=trim(inputdeck)
+
+      open(1,file=inputdeck,iostat=io_status, status='old')
+      if (io_status /= 0) then
+            write(*,*) 'File open error'
+            stop
+      end if
+
+      do
+            READ(1,*, IOSTAT=io) value_name
+            if ( io < 0) then
+                  WRITE(*,*) "Inputdeck file read end"
+                  EXIT
+            end if
+
+            BACKSPACE (1)
+
+            if ( value_name .eq. "INT1") then
+                  READ(1,*) value_name, INT1
+                  WRITE(*,*) "INT1 = ", INT1
+            else if ( value_name .eq. "REAL1") then
+                  READ(1,*) value_name, REAL1
+                  WRITE(*,*) "REAL1 = ", REAL1
+            else  if ( value_name .eq. "LIST") then
+                  READ(1,*) value_name, LIST
+                  write(*,*) "list = ", LIST
+            else  if ( value_name .eq. "VEC") then
+                  READ(1,*) value_name, tempchar, VEC(1), VEC(2), VEC(3)
+                  write(*,*) "Vector = ", VEC(1), VEC(2), VEC(3)
+            else
+                  WRITE(*,*) "Inputdeck value read error"
+                  stop
+            endif
+      end do
+
+      CLOSE(1)
+
+      end program
 ```
 
 
+######주요 변수 설명 
+ - ```INT1```, ```REAL1```, ```LIST```, ```VEC(3)``` : Inputdeck 파일에서 각각의 변수 값를 저장하는 변수
+ - ```io_status``` : 입력 파일 경로가 
+ - ```num_of_args``` : 실행 시 같이 입력된 argument의 개수를 저장하는 변수 
+ - ```args_error_flag = .false.``` : 커맨드 옵션(포트 명)이 잘못 입력된 경우, 이 변수의 값을 ```.true.```로 변경
+
+
+######주요 코드 설명
+
+```fortran
+      ...
+      num_of_args = iargc()
+      ...
 ```
-
-
