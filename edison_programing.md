@@ -249,8 +249,8 @@ VECTOR1 [ 1 0 0 ]
 ```fortran
       program sample
 
-      CHARACTER(len=16) :: cmd_option_name , value_name , temp
-      CHARACTER(len=512) :: inputdeck, inputmodel, inputrestart
+      CHARACTER(len=16) :: cmd_option_name , value_name
+      CHARACTER(len=512) :: inputdeck
       INTEGER :: num_of_args, i, io_status
       LOGICAL :: args_error_flag = .false.
 
@@ -279,9 +279,7 @@ VECTOR1 [ 1 0 0 ]
             stop
       endif
 
-      inputdeck=trim(inputdeck)
-
-      open(1,file=inputdeck,iostat=io_status, status='old')
+      open(1,file=trim(inputdeck),iostat=io_status, status='old')
       if (io_status /= 0) then
             write(*,*) 'File open error'
             stop
@@ -319,18 +317,24 @@ VECTOR1 [ 1 0 0 ]
       end program
 ```
 
+**입력 프로그래밍 > Case 1. 입력 파일이 1개인 경우** 에서 작성된 fortran code에서 inputdeck 파일을 읽어 오는 부분만 추가한 코드이다. 
 
 ######주요 변수 설명 
  - ```INT1```, ```REAL1```, ```LIST```, ```VEC(3)``` : Inputdeck 파일에서 각각의 변수 값를 저장하는 변수
- - ```io_status``` : 입력 파일 경로가 
- - ```num_of_args``` : 실행 시 같이 입력된 argument의 개수를 저장하는 변수 
- - ```args_error_flag = .false.``` : 커맨드 옵션(포트 명)이 잘못 입력된 경우, 이 변수의 값을 ```.true.```로 변경
-
+ - ```io_status``` : 입력 파일 오픈시 에러 발생 여부를 저장하는 변수
 
 ######주요 코드 설명
 
 ```fortran
       ...
-      num_of_args = iargc()
+
+[1]   open(1,file=trim(inputdeck),iostat=io_status, status='old')
+[2]   if (io_status /= 0) then
+            write(*,*) 'File open error'
+            stop
+      end if
       ...
 ```
+1. [open()](https://docs.oracle.com/cd/E19957-01/805-4939/6j4m0vnaf/index.html) 함수를 이용해 ```inputdeck``` 배열에 저장된 PATH의 인풋 파일 읽어 들인다. 이때 [trim()](https://gcc.gnu.org/onlinedocs/gfortran/TRIM.html) 함수를 이용해 앞에서 받은 inputdeck 경로 뒤에 붙은 스페이스를 제거해준다.
+  - ```iostat=io_status``` 은 파일 오픈시 에러 발생하는지를 저장하는 변수 이고
+  - 예를들어 ```trim("Hello   ")``` 실항하면, "Hello"를 리턴하게 된다.  
