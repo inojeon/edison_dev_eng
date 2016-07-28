@@ -355,16 +355,16 @@ VECTOR1 [ 1 0 0 ]
 [3]         if ( value_name .eq. "INT1") then
                   READ(1,*) value_name, INT1
                   WRITE(*,*) "INT1 = ", INT1
-[4]         else if ( value_name .eq. "REAL1") then
+            else if ( value_name .eq. "REAL1") then
                   READ(1,*) value_name, REAL1
                   WRITE(*,*) "REAL1 = ", REAL1
-[5]         else  if ( value_name .eq. "LIST") then
+            else  if ( value_name .eq. "LIST") then
                   READ(1,*) value_name, LIST
                   write(*,*) "list = ", LIST
-[6]         else  if ( value_name .eq. "VEC") then
+            else  if ( value_name .eq. "VEC") then
                   READ(1,*) value_name, tempchar, VEC(1), VEC(2), VEC(3)
                   write(*,*) "Vector = ", VEC(1), VEC(2), VEC(3)
-[7]         else
+[4]         else
                   WRITE(*,*) "Inputdeck value read error"
                   stop
             endif
@@ -373,4 +373,8 @@ VECTOR1 [ 1 0 0 ]
 ```
  1. 장치번호 1번 앞서 open한 입력 파일의 한 줄을 [read()](https://docs.oracle.com/cd/E19957-01/805-4939/6j4m0vnat/index.html)를 사용해 읽는다. 이때 입력 파일의 첫 번째 문자열인 변수 이름을 ```value_name```에 저장한다. 
   - 여기서 파일을 끝까지 다 읽은 경우 파일 read를 하게 되면 ```io``` 값이 0보다 작게 된다. 이를 통해 파일을 끝까지 다 읽었는지 여부를 판단하고 파일을 끝까지 다 읽은 경우 loop문을 빠저나온다.
-2. [backspace()](https://docs.oracle.com/cd/E19957-01/805-4939/6j4m0vn7j/index.html) 함수를 사용해 방금 읽었던 파일 라인을 다시 읽을 수 있도록 이동시킨다. ```[1]``` 에서 변수 이름만 저장하였고, 저장한 변수에 맞게 변수 값을 저장 수 있도록  
+2. [read()](https://docs.oracle.com/cd/E19957-01/805-4939/6j4m0vnat/index.html)함수를 이용해 이미 앞에서 읽었던 파일 라인의 변수의 값을 다시 읽기 위해서, [backspace()](https://docs.oracle.com/cd/E19957-01/805-4939/6j4m0vn7j/index.html)를 이용 방금 읽었던 파일 라인을 다시 읽을 수 있도록 파일 포인터를 이동한다.
+3. 입력 파일에서 읽은 변수 이름을 확인하여 저장 함. 벡터 변수의 경우 변수 이름과 값 사이에 있는 ```[``` 문자를 ```tempchar``` 변수에 저장하고, ```VEC(1~3)``` 에 각각의 벡터 원소들을 저장한다.
+4. 원하지 않은 변수 값이 입력되는경우 이에 대한 에러 메시지를 표시하고 프로그램을 종료
+
+
