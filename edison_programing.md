@@ -241,13 +241,13 @@ Inputdeck에서 필요한 정보들만 담기 위해 Inputdeck 설정 값을 다
 이렇게 설정되어 생성된 인풋 파일은 다음과 같다.
 
 ```
-INT1 42
-REAL1 42.112
-LIST a
-VECTOR1 [ 1 0 0 ]
+INT1 = 42 ;
+REAL1 = 42.112 ;
+LIST = a ;
+VECTOR1 = [ 1 0 0 ] ;
 ```
 #####FORTRAN code example
-위 케이스에서 생성된 입력 파일을 읽어와 같은 이름의 변수를 생성해 저장하는 코드이다. 
+위 케이스에서 생성된 입력 파일을 읽어와 같은 이름의 변수를 생성해 저장하는 코드이다. case 1의 코드와 크게 다르지 않으며, ```tempchar``` 변수를 이용해 변수 이름과 변수 값 사이에 있는 ```=``` 을 처리하는 부분을 추가하였다. 
 
 ```fortran
       program sample
@@ -300,16 +300,17 @@ VECTOR1 [ 1 0 0 ]
             BACKSPACE (1)
 
             if ( value_name .eq. "INT1") then
-                  READ(1,*) value_name, INT1
+                  READ(1,*) value_name, tempchar, INT1
                   WRITE(*,*) "INT1 = ", INT1
             else if ( value_name .eq. "REAL1") then
-                  READ(1,*) value_name, REAL1
+                  READ(1,*) value_name, tempchar, REAL1
                   WRITE(*,*) "REAL1 = ", REAL1
             else  if ( value_name .eq. "LIST") then
-                  read(1,*) value_name, LIST
+                  read(1,*) value_name, tempchar, LIST
                   write(*,*) "list = ", LIST
             else  if ( value_name .eq. "VEC") then
-                  read(1,*) value_name, tempchar, VEC(1), VEC(2), VEC(3)
+                  read(1,*) value_name, tempchar, tempchar, VEC(1), 
+     + VEC(2), VEC(3)
                   write(*,*) "Vector = ", VEC(1), VEC(2), VEC(3)
             else
                   WRITE(*,*) "Inputdeck value read error"
@@ -321,7 +322,6 @@ VECTOR1 [ 1 0 0 ]
 
       end program
             
-
 ```
 
 
