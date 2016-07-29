@@ -70,3 +70,15 @@
 3. 저장한 ```cmd_option_name``` 값이 **-inp**와 같은지 확인하여 같으면, i+1번째 arument 값을 읽어서 ```inputdeck``` 배열에 저장
  - 커맨드 옵션을 ```-inp```가 아닌 다른 옵션 명으로 설정 하고 싶다면, 이 부분을 수정하면 된다.
 4. ```cmd_option_name``` 값이 **-inp**와 다르면, ```args_error_flag``` 를 ```.false.```로 변경하고 잘못 입력한 커맨드 옵션을 출력
+
+```fortran
+      ...
+[1]   if ( args_error_flag .eqv. .true. ) then
+            write (*,*) "CHECK YOUR COMAND OPTION"
+            stop
+      endif
+      ...
+```
+
+1. 커맨드 옵션이 잘못 입력 되었는지 확인하고. 잘못 입력 되었을 경우 프로그램 종료
+
