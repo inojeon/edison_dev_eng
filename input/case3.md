@@ -57,74 +57,78 @@ VECTOR1 [ 1 0 0 ]
 
 #####FORTRAN code example
 ```fortran
-program sample
+      program sample
 
-CHARACTER(len=16) :: cmd_option_name , value_name
-CHARACTER(len=512) :: inputdeck
-INTEGER :: num_of_args, i, io_status
-LOGICAL :: args_error_flag = .false.
+      CHARACTER(len=16) :: cmd_option_name , value_name
+      CHARACTER(len=512) :: inputdeck
+      INTEGER :: num_of_args, i, io_status
+      LOGICAL :: args_error_flag = .false.
 
-INTEGER INT1
-DOUBLE PRECISION REAL1
-CHARACTER LIST, tempchar
-INTEGER :: VEC(3)
+      INTEGER INT1
+      DOUBLE PRECISION REAL1
+      CHARACTER LIST, tempchar
+      INTEGER :: VEC(3)
 
-num_of_args = iargc()
+      num_of_args = iargc()
 
-do i=1, num_of_args, 2
-call getarg(i,cmd_option_name)
+      do i=1, num_of_args, 2
+            call getarg(i,cmd_option_name)
 
-if( cmd_option_name .eq. "-inp") then
-call getarg(i+1,inputdeck)
-write (*,*) trim(inputdeck)
-else
-args_error_flag = .true.
-write (*,*) "ERROR: INVALID COMAND OPTION: " ,
-+ cmd_option_name
-endif
-enddo
+            if( cmd_option_name .eq. "-inp") then
+                  call getarg(i+1,inputdeck)
+                  WRITE (*,*)  trim(inputdeck)
+            else
+                  args_error_flag = .true.
+                  WRITE (*,*) "ERROR: INVALID COMAND OPTION: " ,
+     +            cmd_option_name
+            endif
+      enddo
 
-if ( args_error_flag .eqv. .true. ) then
-WRITE(*,*) "CHECK YOUR COMAND OPTION"
-stop
-endif
+      if ( args_error_flag .eqv. .true. ) then
+            WRITE(*,*) "CHECK YOUR COMAND OPTION"
+            stop
+      endif
 
-open(1,file=trim(inputdeck),iostat=io_status, status='old')
-if (io_status /= 0) then
-write(*,*) 'File open error'
-stop
-end if
+      open(1,file=trim(inputdeck),iostat=io_status, status='old')
+      if (io_status /= 0) then
+            write(*,*) 'File open error'
+            stop
+      end if
 
-do
-READ(1,*, IOSTAT=io) value_name
-if ( io < 0) then
-write(*,*) "Inputdeck file read end"
-EXIT
-end if
+      do
+            READ(1,*, IOSTAT=io) value_name
+            if ( io < 0) then
+                  WRITE(*,*) "Inputdeck file read end"
+                  EXIT
+            end if
 
-BACKSPACE (1)
+            BACKSPACE (1)
 
-if ( value_name .eq. "INT1") then
-read(1,*) value_name, INT1
-write(*,*) "INT1 = ", INT1
-else if ( value_name .eq. "REAL1") then
-read(1,*) value_name, REAL1
-write(*,*) "REAL1 = ", REAL1
-else if ( value_name .eq. "LIST") then
-read(1,*) value_name, LIST
-write(*,*) "list = ", LIST
-else if ( value_name .eq. "VEC") then
-read(1,*) value_name, tempchar, VEC(1),
-+ VEC(2), VEC(3)
-write(*,*) "Vector = ", VEC(1), VEC(2), VEC(3)
-else
-write(*,*) "Inputdeck value read error"
-stop
-endif
-end do
-CLOSE(1)
+            if ( value_name .eq. "INT1") then
+                  READ(1,*) value_name,  INT1
+                  WRITE(*,*) "INT1 = ", INT1
+            else if ( value_name .eq. "REAL1") then
+                  READ(1,*) value_name,  REAL1
+                  WRITE(*,*) "REAL1 = ", REAL1
+            else  if ( value_name .eq. "LIST") then
+                  read(1,*) value_name,  LIST
+                  write(*,*) "list = ", LIST
+            else  if ( value_name .eq. "VEC") then
+                  read(1,*) value_name, tempchar, VEC(1),
+     + VEC(2), VEC(3)
+                  write(*,*) "Vector = ", VEC(1), VEC(2), VEC(3)
+            else
+                  WRITE(*,*) "Inputdeck value read error"
+                  stop
+            endif
+      end do
 
 
+
+      CLOSE(1)
+
+
+      end program
 
 end program
 ```
@@ -139,11 +143,12 @@ end program
 ```fortran
 ...
 
-[1] open(1,file=trim(inputdeck),iostat=io_status, status='old')
-[2] if (io_status /= 0) then
-write(*,*) 'File open error'
-stop
-end if
+[1]   open(1,file=trim(inputdeck),iostat=io_status, status='old')
+[2]   if (io_status /= 0) then
+            write(*,*) 'File open error'
+            stop
+      end if
+
 ...
 ```
 1. [open()](https://docs.oracle.com/cd/E19957-01/805-4939/6j4m0vnaf/index.html) 함수를 이용해 장치번호(UNIT)을 1로 설정하여 ```inputdeck``` 배열에 저장된 PATH의 인풋 파일 읽는다. 이때 [trim()](https://gcc.gnu.org/onlinedocs/gfortran/TRIM.html) 함수를 이용해 앞에서 받은 inputdeck 경로 뒤에 붙은 공백을 제거한다.
@@ -154,32 +159,37 @@ end if
 
 ```fortran
 ...
-do
-[1]   READ(1,*, IOSTAT=io) value_name
-          if ( io < 0) then
-          WRITE(*,*) "Inputdeck file read end"
-          EXIT
-      end if
+      do
+[1]         READ(1,*, IOSTAT=io) value_name
+[2]         if ( io < 0) then
+                  WRITE(*,*) "Inputdeck file read end"
+                  EXIT
+            end if
 
-[2] BACKSPACE (1)
+[3]         BACKSPACE (1)
 
-[3] if ( value_name .eq. "INT1") then
-READ(1,*) value_name, INT1
-WRITE(*,*) "INT1 = ", INT1
-else if ( value_name .eq. "REAL1") then
-READ(1,*) value_name, REAL1
-WRITE(*,*) "REAL1 = ", REAL1
-else if ( value_name .eq. "LIST") then
-READ(1,*) value_name, LIST
-write(*,*) "list = ", LIST
-else if ( value_name .eq. "VEC") then
-READ(1,*) value_name, tempchar, VEC(1), VEC(2), VEC(3)
-write(*,*) "Vector = ", VEC(1), VEC(2), VEC(3)
-[4] else
-WRITE(*,*) "Inputdeck value read error"
-stop
-endif
-end do
+[4]         if ( value_name .eq. "INT1") then
+                  READ(1,*) value_name,  INT1
+                  WRITE(*,*) "INT1 = ", INT1
+            else if ( value_name .eq. "REAL1") then
+                  READ(1,*) value_name,  REAL1
+                  WRITE(*,*) "REAL1 = ", REAL1
+            else  if ( value_name .eq. "LIST") then
+                  read(1,*) value_name,  LIST
+                  write(*,*) "list = ", LIST
+            else  if ( value_name .eq. "VEC") then
+                  read(1,*) value_name, tempchar, VEC(1),
+     + VEC(2), VEC(3)
+                  write(*,*) "Vector = ", VEC(1), VEC(2), VEC(3)
+[5]         else
+                  WRITE(*,*) "Inputdeck value read error"
+                  stop
+            endif
+      end do
+
+
+
+      CLOSE(1)
 ...
 ```
 1. 장치번호 1번을 사용해 앞서 open한 입력 파일의 한 줄을 [read()](https://docs.oracle.com/cd/E19957-01/805-4939/6j4m0vnat/index.html)를 사용해 읽는다. 이때 입력 파일의 첫 번째 문자열인 변수 이름을 ```value_name```에 저장한다. 
@@ -221,76 +231,77 @@ VECTOR1 = [ 1 0 0 ] ;
 위 케이스에서 생성된 입력 파일을 읽어와 같은 이름의 변수를 생성해 저장하는 코드이다. case 1의 코드와 크게 다르지 않으며, ```tempchar``` 변수를 이용해 변수 이름과 변수 값 사이에 있는 ```=``` 을 처리하는 부분을 추가하였다. 
 
 ```fortran
-program sample
+      program sample
 
-CHARACTER(len=16) :: cmd_option_name , value_name , temp
-CHARACTER(len=512) :: inputdeck, inputmodel, inputrestart
-INTEGER :: num_of_args, i, io_status
-LOGICAL :: args_error_flag = .false.
+      CHARACTER(len=16) :: cmd_option_name , value_name
+      CHARACTER(len=512) :: inputdeck
+      INTEGER :: num_of_args, i, io_status
+      LOGICAL :: args_error_flag = .false.
 
-INTEGER INT1
-DOUBLE PRECISION REAL1
-CHARACTER LIST, tempchar
-INTEGER :: VEC(3)
+      INTEGER INT1
+      DOUBLE PRECISION REAL1
+      CHARACTER LIST, tempchar
+      INTEGER :: VEC(3)
 
-num_of_args = iargc()
+      num_of_args = iargc()
 
-do i=1, num_of_args, 2
-call getarg(i,cmd_option_name)
+      do i=1, num_of_args, 2
+            call getarg(i,cmd_option_name)
 
-if( cmd_option_name .eq. "-inp") then
-call getarg(i+1,inputdeck)
-WRITE (*,*) inputdeck
-else
-args_error_flag = .true.
-WRITE (*,*) "ERROR: INVALID COMAND OPTION: " ,
-+ cmd_option_name
-endif
-enddo
+            if( cmd_option_name .eq. "-inp") then
+                  call getarg(i+1,inputdeck)
+                  WRITE (*,*)  trim(inputdeck)
+            else
+                  args_error_flag = .true.
+                  WRITE (*,*) "ERROR: INVALID COMAND OPTION: " ,
+     +            cmd_option_name
+            endif
+      enddo
 
-if ( args_error_flag .eqv. .true. ) then
-WRITE(*,*) "CHECK YOUR COMAND OPTION"
-stop
-endif
+      if ( args_error_flag .eqv. .true. ) then
+            WRITE(*,*) "CHECK YOUR COMAND OPTION"
+            stop
+      endif
 
-inputdeck=trim(inputdeck)
+      open(1,file=trim(inputdeck),iostat=io_status, status='old')
+      if (io_status /= 0) then
+            write(*,*) 'File open error'
+            stop
+      end if
 
-open(1,file=inputdeck,iostat=io_status, status='old')
-if (io_status /= 0) then
-write(*,*) 'File open error'
-stop
-end if
+      do
+            READ(1,*, IOSTAT=io) value_name
+            if ( io < 0) then
+                  WRITE(*,*) "Inputdeck file read end"
+                  EXIT
+            end if
 
-do
-READ(1,*, IOSTAT=io) value_name
-if ( io < 0) then
-WRITE(*,*) "Inputdeck file read end"
-EXIT
-end if
+            BACKSPACE (1)
 
-BACKSPACE (1)
+            if ( value_name .eq. "INT1") then
+                  READ(1,*) value_name, tempchar, INT1
+                  WRITE(*,*) "INT1 = ", INT1
+            else if ( value_name .eq. "REAL1") then
+                  READ(1,*) value_name, tempchar, REAL1
+                  WRITE(*,*) "REAL1 = ", REAL1
+            else  if ( value_name .eq. "LIST") then
+                  read(1,*) value_name, tempchar, LIST
+                  write(*,*) "list = ", LIST
+            else  if ( value_name .eq. "VEC") then
+                  read(1,*) value_name, tempchar, tempchar, VEC(1),
+     + VEC(2), VEC(3)
+                  write(*,*) "Vector = ", VEC(1), VEC(2), VEC(3)
+            else
+                  WRITE(*,*) "Inputdeck value read error"
+                  stop
+            endif
+      end do
 
-if ( value_name .eq. "INT1") then
-READ(1,*) value_name, tempchar, INT1
-WRITE(*,*) "INT1 = ", INT1
-else if ( value_name .eq. "REAL1") then
-READ(1,*) value_name, tempchar, REAL1
-WRITE(*,*) "REAL1 = ", REAL1
-else if ( value_name .eq. "LIST") then
-read(1,*) value_name, tempchar, LIST
-write(*,*) "list = ", LIST
-else if ( value_name .eq. "VEC") then
-read(1,*) value_name, tempchar, tempchar, VEC(1), 
-+ VEC(2), VEC(3)
-write(*,*) "Vector = ", VEC(1), VEC(2), VEC(3)
-else
-WRITE(*,*) "Inputdeck value read error"
-stop
-endif
-end do
 
-CLOSE(1)
 
-end program
+      CLOSE(1)
+
+
+      end program
 
 ```
