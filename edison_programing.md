@@ -231,24 +231,24 @@ Inputdeck 작성 시 입력 파일을 생성하는 규칙을 정할 수 있으�
 
 다음과 같이 정수형 변수 1개, 실수형 변수 1개, 리스트형 변수 1개, 3차원 벡터 1개를 받는 Inputdeck를 생성하였다. 
 
-![case1](그림1.jpg)
+![case1](case1.png)
 
 Inputdeck에서 필요한 정보들만 담기 위해 Inputdeck 설정 값을 다음과 같이 정하였다.   
 
 | INPUTDECK key | value |
 | -- | -- |
-| value delimiter | EQUAL |
-| line  delimiter | SEMICOLON |
+| value delimiter | SPACE |
+| line  delimiter | NULL |
 | Vector vracket | SQUARE_SPACE |
 | Vector delimiter | SPACE |
 
 이렇게 설정되어 생성된 인풋 파일은 다음과 같다.
 
 ```
-INT1 = 42 ;
-REAL1 = 42.112 ;
-LIST = a ;
-VECTOR1 = [ 1 0 0 ] ;
+INT1 42
+REAL1 42.112
+LIST a
+VECTOR1 [ 1 0 0 ]
 ```
 
 
@@ -256,11 +256,10 @@ VECTOR1 = [ 1 0 0 ] ;
 #####FORTRAN code example
 
 
-**입력 프로그래밍 > Case 1. 입력 파일이 1개인 경우** 에서 작성된 fortran code에서 inputdeck 파일을 읽어 오는 부분만 추가한 코드이다. 
 
 ######주요 변수 설명 
 - ```INT1```, ```REAL1```, ```LIST```, ```VEC(3)``` : Inputdeck 파일에서 각각의 변수 값를 저장하는 변수
-- ```io_status``` : 입력 파일 오픈시 에러 발생 여부를 저장하는 변수
+- ```io_status``` : 입력 파일 오픈 시 에러 발생 여부를 저장하는 변수
 
 ######주요 코드 설명
 
