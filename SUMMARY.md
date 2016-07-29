@@ -11,5 +11,5 @@
 * [입출력 프로그래밍](edison_programing.md)
    * [입력 프로그래밍](inputprogram.md)
        * [입력 파일이 1개인 경우](input/case1.md)
-       * 입력 파일이 2개인 경우 
+       * [입력 파일이 2개인 경우](input/case2.md)
 
