@@ -9,5 +9,5 @@
 * [라이브러리](lib.md)
 * [요약](SUMMARY.md)
 * [입출력 프로그래밍](edison_programing.md)
-   * 입력 프로그래밍
+   * [입력 프로그래밍](inputprogram.md)
 
