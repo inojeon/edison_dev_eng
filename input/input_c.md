@@ -83,4 +83,5 @@ int main (int argc, char* argv[])
 4. [fopen()](http://www.cplusplus.com/reference/cstdio/fopen/?kw=fopen) 함수를 이용해 ```argv[count+1]```에 저장되어 있는 경로의 실행 파일을 읽기 전용(```"r"``` 옵션 사용)으로 연다.
  - 파일 포인터를 반환하여 ```inputdeck``` 파일포인터에 저장한다.
 5. 파일 포인터가 정상적으로 반환되지 않는 경우 ```NULL``` 값을 리턴하고, 파일 포인터 값이 ```NULL```인 경우 에러 매시지를 표시하고 프로그램을 종료한다.
-6. 커맨드 옵션이 잘못 입력된 경우 에러 메시지를 표시하고 ```args_error_flag``` 값을 1로 변경하여, 잘못 입력 되었음을 
+6. 커맨드 옵션이 잘못 입력된 경우 에러 메시지를 표시하고 ```args_error_flag``` 값을 1로 변경하고 잘못 입력한 커맨드 옵션을 출력
+7. ```args_error_flag``` 가 1인 경우
