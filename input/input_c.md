@@ -49,11 +49,10 @@ int main (int argc, char* argv[])
 [1]   if (argc > 1) {
 [2]         for (count = 1; count < argc; count+=2) {
 [3]               if(!strcmp(argv[count],"-inp")) {
-                        printf("-inp : %s \n", argv[count+1]);
 [4]                     inputdeck = fopen(argv[count+1], "r");
 
-[6]                     if (inputdeck == NULL) {
-                              printf("Error opening file \n");
+[5]                     if (inputdeck == NULL) {
+                              printf("Error opening file : %s \n",argv[count+1]);
                               exit(1);
                         }
 [6]               } else {
@@ -71,7 +70,7 @@ int main (int argc, char* argv[])
       }
 
 
-[9]   fclose(inputdeck);
+[8]   fclose(inputdeck);
       ...
 ```
 1. 프로그램 실행 시 ```argc``` 값을 확인하여, 커맨드 옵션과 실행 파일 경로가 입력되어 있는지 확인하고, 정상적으로 입력이 되지 않은 경우 에러 메시지와 함께 프로그램 종료
@@ -81,7 +80,7 @@ int main (int argc, char* argv[])
 3. [strcmp()](http://www.cplusplus.com/reference/cstring/strcmp/) 함수를 이용해 입력된 커맨드 옵션과 ```"-inp"``` 값을 비교해 원하는 옵션 값이 입력 되었는지 확인한다.
  - 비교하는 문자열이 일치하는 경우 [strcmp()](http://www.cplusplus.com/reference/cstring/strcmp/) 는 0 값을 리턴한다. 따라서 ```!```연산자를 이용해 일치하는 경우 조건문이 참이 되도록 하였다.
  - 커맨드 옵션을 ```-inp```가 아닌 다른 옵션 명으로 설정 하고 싶다면, 이 부분을 수정하면 된다.  
-4.    
-
-
-
+4. [fopen()](http://www.cplusplus.com/reference/cstdio/fopen/?kw=fopen) 함수를 이용해 ```argv[count+1]```에 저장되어 있는 경로의 실행 파일을 읽기 전용(```"r"``` 옵션 사용)으로 연다.
+ - 파일 포인터를 반환하여 ```inputdeck``` 파일포인터에 저장한다.
+5. 파일 포인터가 정상적으로 반환되지 않는 경우 ```NULL``` 값을 리턴하고, 파일 포인터 값이 ```NULL```인 경우 에러 매시지를 표시하고 프로그램을 종료한다.
+6. 커맨드 옵션이 잘못 입력된 경우 에러 메시지를 표시하고 ```args_error_flag``` 값을 1로 변경하여, 잘못 입력 되었음을 
