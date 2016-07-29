@@ -1,4 +1,4 @@
-# input/case3
+# Inputdeck을 입력 파일로 사용하는 경우 
 
 #### Case 3. Inputdeck을 입력 파일로 사용하는 경우 
 
@@ -195,7 +195,7 @@ end do
 
 다음과 같이 정수형 변수 1개, 실수형 변수 1개, 리스트형 변수 1개, 3차원 벡터 1개를 받는 Inputdeck를 생성하였다. 
 
-![case2](그림1.jpg)
+![case2](case3_3.jpg)
 
 Inputdeck에서 필요한 정보들만 담기 위해 Inputdeck 설정 값을 다음과 같이 정하였다. 
 
