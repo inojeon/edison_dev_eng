@@ -51,7 +51,8 @@ int main (int argc, char* argv[])
 [3]               if(!strcmp(argv[count],"-inp")) {
                         printf("-inp : %s \n", argv[count+1]);
 [4]                     inputdeck = fopen(argv[count+1], "r");
-[6]                        if (inputdeck == NULL) {
+
+[6]                     if (inputdeck == NULL) {
                               printf("Error opening file \n");
                               exit(1);
                         }
@@ -77,7 +78,10 @@ int main (int argc, char* argv[])
  - 프로그램 실행 시 옵션을 하나도 입력하지 않으면 ```argc``` 값은 1이다. 따라서 1 이상 값이 입력이 되었는지 확인한다.
 2. ```for```문을 이용해 ```argc``` 개수 까지 ```count``` 값을 2씩 증가하면서 ```for``` 문 수행
  -  예제에서 ```argc``` 값이 3이고, ```count```값이 1 이므로 ```for```문이 한번만 수행 됨
-3. [strcmp()](http://www.cplusplus.com/reference/cstring/strcmp/) 함수를 이용해 
+3. [strcmp()](http://www.cplusplus.com/reference/cstring/strcmp/) 함수를 이용해 입력된 커맨드 옵션과 ```"-inp"``` 값을 비교해 원하는 옵션 값이 입력 되었는지 확인한다.
+ - 비교하는 문자열이 일치하는 경우 [strcmp()](http://www.cplusplus.com/reference/cstring/strcmp/) 는 0 값을 리턴한다. 따라서 ```!```연산자를 이용해 일치하는 경우 조건문이 참이 되도록 하였다.
+ - 커맨드 옵션을 ```-inp```가 아닌 다른 옵션 명으로 설정 하고 싶다면, 이 부분을 수정하면 된다.  
+4.    
 
 
 
