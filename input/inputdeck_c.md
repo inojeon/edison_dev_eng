@@ -100,11 +100,9 @@ int main (int argc, char* argv[])
       return 0;
 }
 
+```
 [입력 파일이 1개인 경우의 C 예제 코드](input/input_c.md)에서 Inputdeck 파일을 읽는 부분을 추가한 예제이다. 
 
-
-
-```
 
 
 ######주요 변수 설명 
