@@ -2,9 +2,13 @@
 
 
 ```c
+#include <stdio.h>
+#include <stdlib.h>
+
+
 int main (int argc, char* argv[])
 {
-      FILE *inputdeck;
+      FILE *fp_inputdeck ;
       int count;
       char args_error_flag = 0;
 
@@ -12,11 +16,7 @@ int main (int argc, char* argv[])
             for (count = 1; count < argc; count+=2) {
                   if(!strcmp(argv[count],"-inp")) {
                         printf("-inp : %s \n", argv[count+1]);
-                        inputdeck = fopen(argv[count+1], "r");
-                        if (inputdeck == NULL) {
-                              printf("Error opening file \n");
-                              exit(1);
-                        }
+                        fp_inputdeck = fopen(argv[count+1], "r");
                   } else {
                         printf("Invalid command option: %s\n", argv[count] );
                         args_error_flag = 1;
@@ -28,39 +28,39 @@ int main (int argc, char* argv[])
             }
       } else {
             printf("Invalid arguments number.\n");
+            exit(1);
+      }
+      if (fp_inputdeck == NULL) {
+            printf("Error opening fp_inputdeck file \n");
+            exit(1);
       }
 
-
-
-      fclose(inputdeck);
+      fclose(fp_inputdeck);
 
       return 0;
 }
 ```
 ####주요 변수 설명 
- - ```*inputdeck``` : 파일을 가르키는 파일포인터 변수 선언
+ - ```*fp_inputdeck``` : 파일을 가르키는 파일포인터 변수 선언
  - ```args_error_flag = 0``` : 커맨드 옵션(포트 명)이 잘못 입력된 경우, 이 변수의 값을 ```1```로 변경
 
 
 ####주요 코드 설명
+
 
 ```c
       ...
 [1]   if (argc > 1) {
 [2]         for (count = 1; count < argc; count+=2) {
 [3]               if(!strcmp(argv[count],"-inp")) {
-[4]                     inputdeck = fopen(argv[count+1], "r");
-
-[5]                     if (inputdeck == NULL) {
-                              printf("Error opening file : %s \n",argv[count+1]);
-                              exit(1);
-                        }
-[6]               } else {
+                        printf("-inp : %s \n", argv[count+1]);
+[4]                     fp_inputdeck = fopen(argv[count+1], "r");
+[5]                  } else {
                         printf("Invalid command option: %s\n", argv[count] );
                         args_error_flag = 1;
                   };
             }
-[7]         if(args_error_flag == 1) {
+[6]         if(args_error_flag == 1) {
                   printf("Check your comand option\n");
                   exit(1);
             }
@@ -68,11 +68,16 @@ int main (int argc, char* argv[])
             printf("Invalid arguments number.\n");
             exit(1);
       }
+[7]   if (fp_inputdeck == NULL) {
+            printf("Error opening fp_inputdeck file \n");
+            exit(1);
+      }
 
+[8]   fclose(fp_inputdeck);
 
-[8]   fclose(inputdeck);
       ...
 ```
+
 1. 프로그램 실행 시 ```argc``` 값을 확인하여, 커맨드 옵션과 실행 파일 경로가 입력되어 있는지 확인하고, 정상적으로 입력이 되지 않은 경우 에러 메시지와 함께 프로그램 종료
  - 프로그램 실행 시 옵션을 하나도 입력하지 않으면 ```argc``` 값은 1이다. 따라서 1 이상 값이 입력이 되었는지 확인한다.
 2. ```for```문을 이용해 ```argc``` 개수 까지 ```count``` 값을 2씩 증가하면서 ```for``` 문 수행
@@ -82,9 +87,9 @@ int main (int argc, char* argv[])
  - 커맨드 옵션을 ```-inp```가 아닌 다른 옵션 명으로 설정 하고 싶다면, 이 부분을 수정하면 된다.  
 4. [fopen()](http://www.cplusplus.com/reference/cstdio/fopen/?kw=fopen) 함수를 이용해 ```argv[count+1]```에 저장되어 있는 경로의 실행 파일을 읽기 전용(```"r"``` 옵션 사용)으로 연다.
  - 파일 포인터를 반환하여 ```inputdeck``` 파일포인터에 저장한다.
-5. 파일 포인터가 정상적으로 반환되지 않는 경우 ```NULL``` 값을 리턴하고, 파일 포인터 값이 ```NULL```인 경우 에러 매시지를 표시하고 프로그램을 종료한다.
-6. 커맨드 옵션이 잘못 입력된 경우 에러 메시지를 표시하고 ```args_error_flag``` 값을 1로 변경하고 잘못 입력한 커맨드 옵션을 출력
-7. ```args_error_flag``` 가 1인 경우 (커맨드 옵션이 잘못 입력 되었을 경우) 프로그램 종료 한다.
+5.  커맨드 옵션이 잘못 입력된 경우 에러 메시지를 표시하고 ```args_error_flag``` 값을 1로 변경하고 잘못 입력한 커맨드 옵션을 출력
+6. ```args_error_flag``` 가 1인 경우 (커맨드 옵션이 잘못 입력 되었을 경우) 프로그램 종료 한다.
+7. 파일 포인터가 정상적으로 반환되지 않는 경우 ```NULL``` 값을 리턴하고, 파일 포인터 값이 ```NULL```인 경우 에러 매시지를 표시하고 프로그램을 종료한다.
 8. [fclose()](http://www.cplusplus.com/reference/cstdio/fclose/?kw=fclose) 함수를 이용해 파일 포인터의 연결을 끊는다.
 
 
