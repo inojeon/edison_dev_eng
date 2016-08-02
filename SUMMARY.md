@@ -17,6 +17,6 @@
            * [fortran example](input/case2_fortran.md)
            * [c example](input/c_example.md)
        * [Inputdeck 프로그래밍](input/case3.md)
-           * [fortran example](input/inputdeckfortran.md)
+           * [Fortran example](input/inputdeckfortran.md)
            * [C example](input/inputdeck_c_example.md)
 
