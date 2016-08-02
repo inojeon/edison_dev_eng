@@ -19,7 +19,7 @@ Inputdeck에서 필요한 정보들만 담기 위해 Inputdeck 설정 값을 다
 | Vector vracket | SQUARE_SPACE |
 | Vector delimiter | SPACE |
 
-이렇게 설정되어 생성된 인풋 파일은 다음과 같다.
+이렇게 설정되어 생성된 입력 파일은 다음과 같다.
 
 ```
 INT1 42
