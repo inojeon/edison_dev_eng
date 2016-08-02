@@ -104,6 +104,7 @@ VECTOR1 [ 1 0 0 ]
 
 end program
 ```
+[입력 파일이 1개인 경우의 Fortran 예제 코드](input/case1.md)에서 
 
 
 ######주요 변수 설명 
