@@ -126,21 +126,21 @@ end program
 1. [open()](https://docs.oracle.com/cd/E19957-01/805-4939/6j4m0vnaf/index.html) 함수를 이용해 장치번호(UNIT)을 1로 설정하여 ```inputdeck``` 배열에 저장된 PATH의 인풋 파일 읽는다. 이때 [trim()](https://gcc.gnu.org/onlinedocs/gfortran/TRIM.html) 함수를 이용해 앞에서 받은 inputdeck 경로 뒤에 붙은 공백을 제거한다.
 - ```iostat=io_status``` 은 파일 오픈 시 에러 발생 여부를 확인하는 옵션으로, 정상적으로 파일 오픈시 0 값을 저장
 - ```status='old'``` 는 기존의 있는 파일을 오픈하는 경우 ```old``` 값을 입력한다. 
-- 예를들어 ```trim("Hello ")``` 실항하면, "Hello"를 리턴하게 된다. 
+- 예를들어 ```trim("Hello           ")``` 실항하면, "Hello"를 리턴하게 된다. 
 2. 입력된 path에 파일이 없거나 정상적으로 파일이 오픈이 안되는 경우 ```io_status```값이 0이 아닌 값을 리턴한다. 에러 메시지를 표시하고 프로그램을 종료한다. 
 
 ```fortran
 ...
       do
 [1]         READ(1,*, IOSTAT=io) value_name
-[2]         if ( io < 0) then
+            if ( io < 0) then
                   WRITE(*,*) "Inputdeck file read end"
                   EXIT
             end if
 
-[3]         BACKSPACE (1)
+[2]         BACKSPACE (1)
 
-[4]         if ( value_name .eq. "INT1") then
+[3]         if ( value_name .eq. "INT1") then
                   READ(1,*) value_name,  INT1
                   WRITE(*,*) "INT1 = ", INT1
             else if ( value_name .eq. "REAL1") then
@@ -153,7 +153,7 @@ end program
                   read(1,*) value_name, tempchar, VEC(1),
      + VEC(2), VEC(3)
                   write(*,*) "Vector = ", VEC(1), VEC(2), VEC(3)
-[5]         else
+[4]         else
                   WRITE(*,*) "Inputdeck value read error"
                   stop
             endif
@@ -165,7 +165,7 @@ end program
 ...
 ```
 1. 장치 번호 1번을 사용해 앞서 open한 입력 파일의 한 줄을 [read()](https://docs.oracle.com/cd/E19957-01/805-4939/6j4m0vnat/index.html)를 사용해 읽는다. 이때 입력 파일의 첫 번째 문자열인 변수 이름을 ```value_name```에 저장한다. 
-- 여기서 파일을 끝까지 다 읽은 경우 파일 read를 하게 되면 ```io``` 값이 0보다 작게 된다. 이를 통해 파일을 끝까지 다 읽었는지 여부를 판단하고 파일을 끝까지 다 읽은 경우 loop문을 빠저나온다.
+ - 여기서 파일을 끝까지 다 읽은 경우 파일 read를 하게 되면 ```io``` 값이 0보다 작게 된다. 이를 통해 파일을 끝까지 다 읽었는지 여부를 판단하고 파일을 끝까지 다 읽은 경우 loop문을 빠저나온다.
 2. [read()](https://docs.oracle.com/cd/E19957-01/805-4939/6j4m0vnat/index.html)함수를 이용해 이미 앞에서 읽었던 파일 라인의 변수의 값을 다시 읽기 위해서, [backspace()](https://docs.oracle.com/cd/E19957-01/805-4939/6j4m0vn7j/index.html)를 이용 방금 읽었던 파일 라인을 다시 읽을 수 있도록 파일 포인터를 이동한다.
 3. 입력 파일에서 읽은 변수 이름을 확인하여 저장 함. 벡터 변수의 경우 변수 이름과 값 사이에 있는 ```[``` 문자를 ```tempchar``` 변수에 저장하고, ```VEC(1~3)``` 에 각각의 벡터 원소들을 저장한다.
 4. 원하지 않은 변수 값이 입력되는 경우 이에 대한 에러 메시지를 표시하고 프로그램을 종료
