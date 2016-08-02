@@ -27,7 +27,7 @@ VECTOR1 [ 1 0 0 ]
 
 
 
-#####C code example
+####Code example
 ```c
 #include <stdio.h>
 #include <stdlib.h>
@@ -143,7 +143,7 @@ int main (int argc, char* argv[])
 5. 원하지 않은 변수 값이 입력되는 경우 이에 대한 에러 메시지를 표시하고 프로그램을 종료
 
 
-#### Case 3.2. Inputdeck case study 2
+### Inputdeck case study 2
 
 다음과 같이 정수형 변수 1개, 실수형 변수 1개, 리스트형 변수 1개, 3차원 벡터 1개를 받는 Inputdeck를 생성하였다. 
 
