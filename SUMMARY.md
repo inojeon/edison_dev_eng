@@ -12,7 +12,7 @@
    * [입력 프로그래밍](inputprogram.md)
        * [입력 파일이 1개인 경우](input/case1.md)
            * [fortran example](input/input_fortran.md)
-           * [c example](input/input_c.md)
+           * [C example](input/input_c.md)
        * [입력 파일이 2개인 경우](input/case2.md)
            * [Fortran example](input/case2_fortran.md)
            * [C example](input/c_example.md)
