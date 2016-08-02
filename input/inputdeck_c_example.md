@@ -90,7 +90,8 @@ int main (int argc, char* argv[])
                   printf("Inputdeck value read error\n");
                   exit(1);
             }
-
+      }
+      
       printf("int1: %d \n", int1);
       printf("real1: %f \n", real1);
       printf("list1: %c \n", list);
@@ -115,15 +116,34 @@ int main (int argc, char* argv[])
 
 ```c
 ...
+[1]   while(1)
+      {
+[2]         fscanf(fp_inputdeck,"%s", buf_char);
+[3]         if(feof(fp_inputdeck))
+                  break;
 
-
-
+[4]         if(!strcmp(buf_char, "INT1")) {
+                  fscanf(fp_inputdeck, "%d", &int1);
+[5]         } else if (!strcmp(buf_char, "REAL1")) {
+                  fscanf(fp_inputdeck, "%lf", &real1);
+[6]         } else if (!strcmp(buf_char, "LIST")) {
+                  fscanf(fp_inputdeck, "%s", &list1);
+[7]         } else if (!strcmp(buf_char, "VECTOR1")) {
+                  fscanf(fp_inputdeck, "%*s %d %d %d %*s", &vector[0], &vector[1], &vector[2]);
+[8]         } else {
+                  printf("%s\n", buf_char);
+                  printf("Inputdeck value read error\n");
+                  exit(1);
+            }
+      }
 ...
 ```
 
-```
+1. ```while``` 문을 이용해 파일을 처음부터 끝까지 읽는다. 
+2. [fscanf()](http://www.cplusplus.com/reference/cstdio/fscanf/?kw=fscanf) 함수를 이용해 변수 이름이 저장되어 있는 하나의 문자열(첫 단어)를 ```buf_char```에 저장한다. 
+3. [feof()](http://www.cplusplus.com/reference/cstdio/feof/) 함수를 이용해 파일의 끝까지 읽으면 ```break``` 문을 이용해 ```while```문을 빠져 나온다.
+4. 
 
-```
 
 
 1. 장치 번호 1번을 사용해 앞서 open한 입력 파일의 한 줄을 [read()](https://docs.oracle.com/cd/E19957-01/805-4939/6j4m0vnat/index.html)를 사용해 읽는다. 이때 입력 파일의 첫 번째 문자열인 변수 이름을 ```value_name```에 저장한다. 
