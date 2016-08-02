@@ -18,5 +18,5 @@
            * [c example](input/c_example.md)
        * [Inputdeck 프로그래밍](input/case3.md)
            * [fortran example](input/inputdeckfortran.md)
-           * c example
+           * [c example](input/inputdeck_c_example.md)
 
