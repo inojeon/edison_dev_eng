@@ -104,7 +104,7 @@ VECTOR1 [ 1 0 0 ]
 
 end program
 ```
-[입력 파일이 1개인 경우의 Fortran 예제 코드](input/case1.md)에서 
+[입력 파일이 1개인 경우의 Fortran 예제 코드](input/input_fortran.md)에서 Inputdeck 파일을 읽는 부분을 추가한 예제이다. 
 
 
 ######주요 변수 설명 
