@@ -1,10 +1,7 @@
 # C example
 
 
-# inputdeck_fortran
-
-
-#### Case 3.1. Inputdeck case study 1
+### Inputdeck case study 1
 
 다음과 같이 정수형 변수 1개, 실수형 변수 1개, 리스트형 변수 1개, 3차원 벡터 1개를 받는 Inputdeck를 생성하였다. 
 
