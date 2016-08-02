@@ -73,7 +73,7 @@ int main (int argc, char* argv[])
                         args_error_flag = 1;
                   };
             }
-[6]         if(args_error_flag == 1) {
+            if(args_error_flag == 1) {
                   printf("Check your comand option\n");
                   exit(1);
             }
@@ -106,8 +106,7 @@ int main (int argc, char* argv[])
 4. [fopen()](http://www.cplusplus.com/reference/cstdio/fopen/?kw=fopen) 함수를 이용해 ```argv[count+1]```에 저장되어 있는 경로의 실행 파일을 읽기 전용(```"r"``` 옵션 사용)으로 연다.
  - 파일 포인터를 반환하여 ```*fp_inputdeck```과 ```*fp_mesh``` 파일포인터에 각각 저장한다.
 5. 커맨드 옵션이 잘못 입력된 경우 에러 메시지를 표시하고 ```args_error_flag``` 값을 1로 변경하고 잘못 입력한 커맨드 옵션을 출력
-6. 
-7. ```args_error_flag``` 가 1인 경우 (커맨드 옵션이 잘못 입력 되었을 경우) 프로그램 종료 한다.
-8. 파일 포인터가 정상적으로 반환되지 않는 경우 ```NULL``` 값을 리턴하고, 파일 포인터 값이 ```NULL```인 경우 에러 매시지를 표시하고 프로그램을 종료한다.
-9. [fclose()](http://www.cplusplus.com/reference/cstdio/fclose/?kw=fclose) 함수를 이용해 파일 포인터의 연결을 끊는다.
+6. ```args_error_flag``` 가 1인 경우 (커맨드 옵션이 잘못 입력 되었을 경우) 프로그램 종료 한다.
+7. 파일 포인터가 정상적으로 반환되지 않는 경우 ```NULL``` 값을 리턴하고, 파일 포인터 값이 ```NULL```인 경우 에러 매시지를 표시하고 프로그램을 종료한다.
+8. [fclose()](http://www.cplusplus.com/reference/cstdio/fclose/?kw=fclose) 함수를 이용해 파일 포인터의 연결을 끊는다.
 
