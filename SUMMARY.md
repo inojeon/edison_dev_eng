@@ -13,7 +13,7 @@
        * [입력 파일이 1개인 경우](input/case1.md)
            * [Fortran example](input/input_fortran.md)
            * [C example](input/input_c.md)
-           * Python example
+           * [Python example](input/python_example.md)
        * [입력 파일이 2개인 경우](input/case2.md)
            * [Fortran example](input/case2_fortran.md)
            * [C example](input/c_example.md)
