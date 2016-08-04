@@ -22,3 +22,13 @@ if __name__ == '__main__':
       main()
 
 ```
+
+
+### 주요 코드 설명
+```python
+#!/usr/local/bin/python
+
+import sys
+import getopt
+
+```
