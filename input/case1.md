@@ -6,7 +6,9 @@
 
  - 리눅스 상에서 실행 커맨드 예 ::  
    - **./a.out -inp /home/user1/data/sample1.dat** 
-
+ - 파이썬 스크립트 예제의 경우에는 아래 옵션 커맨드로 입력시 동작하는 예제이며, 이에 맞도록 입력 포트 정보를 수정해 주어야 한다.
+   -  **./a.out -i /home/user1/data/sample1.dat** 
+   -  **./a.out --inp /home/user1/data/sample1.dat** 
 
 예제에 맞게 작성된 입력 포트 정보는 아래 그림과 같다.  
 
