@@ -15,11 +15,18 @@ def main():
 
       for opt,arg in opts:
             if  opt in ("-i", "--inp"):
-                  print "input file = "+arg
+                  f_inputdeck = open(arg, "r")
+
+      print "input file = " + f_inputdeck.name
+      inputdeck_lines = f_inputdeck.readlines()
+
+      f_inputdeck.close()
       return
 
 if __name__ == '__main__':
       main()
+
+
 
 ```
 
