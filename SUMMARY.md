@@ -17,7 +17,7 @@
        * [입력 파일이 2개인 경우](input/case2.md)
            * [Fortran example](input/case2_fortran.md)
            * [C example](input/c_example.md)
-           * Python example
+           * [Python example](input/python_example2.md)
        * [Inputdeck 프로그래밍](input/case3.md)
            * [Fortran example](input/inputdeckfortran.md)
            * [C example](input/inputdeck_c.md)
