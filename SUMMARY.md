@@ -21,4 +21,5 @@
        * [Inputdeck 프로그래밍](input/case3.md)
            * [Fortran example](input/inputdeckfortran.md)
            * [C example](input/inputdeck_c.md)
+           * Python example
 
