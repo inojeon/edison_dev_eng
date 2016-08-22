@@ -20,7 +20,7 @@
            * [Fortran example](input/inputdeckfortran.md)
            * [C example](input/inputdeck_c.md)
            * [Python example](input/python_example3.md)
-   * 출력 프로그래밍
+   * [출력 프로그래밍](output/output.md)
 * [라이브러리](lib.md)
 * [요약](SUMMARY.md)
 
