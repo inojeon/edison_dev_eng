@@ -56,5 +56,10 @@ Editor 목록
  - TEXT_EDITOR : 메모장 형태의 파일을 직접 작성할 수 있는 에디터 환경을 제공합니다. 해당 에디터로 텍스트를 입력한 뒤 저장을 하면, 텍스트 파일로 저장 되며, 이를 바로 입력파일로 사용할 수 있습니다.
 
 Analyzer 목록
- - WEBGL_Viewer : 
+ - WEBGL_Viewer : 파일이 HTML등의 웹 문서인 경우 해당 뷰어를 선택
+ - ONEDPLOT_Viewer : 1차원 그래프를 표시해주는 뷰어, 파일이 oneD 인 경우 이 뷰어를 선택
+ - TEXT_Viewer : 텍스트 파일을 보여주는 뷰어
+ - Image_Viewer : 이비지 파일을 보여주는 뷰어
+
+
 
