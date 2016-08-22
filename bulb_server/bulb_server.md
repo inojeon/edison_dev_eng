@@ -30,6 +30,7 @@
 - FileZilla > 편집 > 설정 이동 
  - 프록시 : SOCK 5, 프록시 호스트 : access.edison.re.kr, 프록시 포트 8325
 
+
 ![호스트 : bulb.edison.re.kr, 포트 : 22002, 프로토콜 : SFTP
 ](noname02.png)
 ![프록시 : SOCK 5, 프록시 호스트 : access.edison.re.kr, 프록시 포트 8325](noname03.png)
