@@ -7,7 +7,7 @@
    * [SW 개발 주의 사항](sw_development.md)
    * [Meta 정보 입력](metadata.md)
 * [입출력 프로그래밍](edison_programing.md)
-   * [입력 프로그래밍](inputprogram.md)
+   * [입력 프로그래밍](input/inputprogram.md)
        * [입력 파일이 1개인 경우](input/case1.md)
            * [Fortran example](input/input_fortran.md)
            * [C example](input/input_c.md)
