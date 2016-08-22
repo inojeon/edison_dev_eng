@@ -18,8 +18,8 @@
            * [C example](input/inputdeck_c.md)
            * [Python example](input/python_example3.md)
    * [출력 프로그래밍](output/output.md)
-* [라이브러리](lib.md)
-* [요약](SUMMARY.md)
 * [사이언스 앱 등록](meta_data/app_register.md)
    * 앱 정보 입력
+* [라이브러리](lib.md)
+* [요약](SUMMARY.md)
 
