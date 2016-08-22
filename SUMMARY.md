@@ -21,6 +21,7 @@
 * [사이언스 앱 등록](meta_data/app_register.md)
    * 앱 정보 입력
    * 실행환경 정보 입력
+   * 입출력 포트 정보 입력
 * [라이브러리](lib.md)
 * [요약](SUMMARY.md)
 
