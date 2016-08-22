@@ -23,6 +23,7 @@
    * [실행환경 정보 입력](meta_data/execute_info.md)
    * [입출력 포트 정보 입력](meta_data/in_out_port.md)
        * 포트 생성
+       * 인풋덱 생성
    * 앱 테스트
 * [라이브러리](lib.md)
 * [요약](SUMMARY.md)
