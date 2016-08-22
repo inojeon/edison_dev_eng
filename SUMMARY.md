@@ -20,4 +20,5 @@
    * [출력 프로그래밍](output/output.md)
 * [라이브러리](lib.md)
 * [요약](SUMMARY.md)
+* 사이언스 앱 등록
 
