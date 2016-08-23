@@ -58,7 +58,7 @@ f_out.close()
 
 ####주요 코드 설명
 
-입력 파일을 읽고 이를 각각의 변수로 저장하는 부분은 입력프로그래밍의 [](../input/python_example3.md)[Inputdeck 프로그래밍](input/python_example3.md) 예제에서 가져왔다.
+입력 파일을 읽고 이를 각각의 변수로 저장하는 부분은 입력프로그래밍의 [Inputdeck 프로그래밍](../input/python_example3.md) 예제에서 가져왔다.
 
 ```Python
 import sys, os
