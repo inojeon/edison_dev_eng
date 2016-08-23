@@ -31,7 +31,7 @@
        * [포트 생성](meta_data/port.md)
        * [인풋덱 생성](meta_data/inputdeck.md)
    * [앱 테스트](meta_data/app_test.md)
-   * 앱 업그레이드
+   * [앱 업그레이드](meta_data/app_upgrade.md)
 * [라이브러리](lib.md)
 * [요약](SUMMARY.md)
 
