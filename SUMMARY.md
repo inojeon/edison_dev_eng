@@ -3,7 +3,6 @@
 * [Introduction](README.md)
 * [계정 발급](developer_account/developer_account.md)
 * [개발자 서버 접속](bulb_server/bulb_server.md)
-* [개발 관련 tip](edison_simulation.md)
 * [입출력 프로그래밍](edison_programing.md)
    * [입력 프로그래밍](input/inputprogram.md)
        * [입력 파일이 1개인 경우](input/case1.md)
@@ -33,6 +32,7 @@
        * [인풋덱 생성](meta_data/inputdeck.md)
    * [앱 테스트](meta_data/app_test.md)
    * [앱 업그레이드](meta_data/app_upgrade.md)
+* [개발 관련 tip](edison_simulation.md)
 * [라이브러리](lib.md)
 * [요약](SUMMARY.md)
 
