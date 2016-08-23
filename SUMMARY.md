@@ -20,6 +20,7 @@
    * [출력 프로그래밍](output/output.md)
        * [OneD Plot](output/oneDplot.md)
            * [Python Example](output/python_oned.md)
+           * C Example
 * [사이언스 앱 등록](meta_data/app_register.md)
    * [앱 정보 입력](meta_data/App_Info.md)
    * [실행환경 정보 입력](meta_data/execute_info.md)
