@@ -3,6 +3,7 @@
 * [Introduction](README.md)
 * [계정 발급](developer_account/developer_account.md)
 * [개발자 서버 접속](bulb_server/bulb_server.md)
+* [EDISON 시뮬레이션 수행 프로세스](edison_simulation.md)
 * [입출력 프로그래밍](edison_programing.md)
    * [입력 프로그래밍](input/inputprogram.md)
        * [입력 파일이 1개인 경우](input/case1.md)
@@ -34,5 +35,4 @@
    * [앱 업그레이드](meta_data/app_upgrade.md)
 * [라이브러리](lib.md)
 * [요약](SUMMARY.md)
-* [EDISON 시뮬레이션 수행 프로세스](edison_simulation.md)
 
