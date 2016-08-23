@@ -23,10 +23,10 @@ inputdeck_lines = f_inputdeck.readlines()
 
 for line in inputdeck_lines:
       opt  = line.split()[0]
-      if opt in "int1":
+      if opt in "INT1":
             int1 = int(line.split('=')[1].split(';')[0])
             print "init1 : " + str(int1)
-      elif opt in "real1":
+      elif opt in "REAL1":
             real1 = float(line.split('=')[1].split(';')[0])
             print "real1 : " + str(real1)
       else:
