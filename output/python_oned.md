@@ -49,7 +49,7 @@ f_out.write("#Field1: a=%d b=%f,NumPoint:%i\n" % (int1, real1, len(times)))
 
 for time in times :
       y = int1*math.sin(time+real1)
-      f_out.write("%10.3e     %10.3e\n" % (time, y))
+      f_out.write("%10.3f     %10.3f\n" % (time, y))
 
 f_out.close()
 
@@ -100,7 +100,7 @@ f_out.write("#Field1: a=%d b=%f,NumPoint:%i\n" % (int1, real1, len(times)))
 ```python
 for time in times :
       y = int1*math.sin(time+real1)
-      f_out.write("%10.3e     %10.3e\n" % (time, y))
+      f_out.write("%10.3f     %10.3f\n" % (time, y))
 
 f_out.close()
 ```
