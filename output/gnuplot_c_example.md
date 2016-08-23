@@ -1,5 +1,7 @@
 # Gnuplot C example
 
+이번 예제는 실행파일과 실행 파일을 동작시키는 bash 쉘 스크립트 파일 그리고 gnuplot의 PATH export 명령어를 저장하고 있는 ```simrc```파일이 필요하다. 실행 파일에 대한 c소스 코드 파일은 아래와 같다. 
+
 ### main.c 
 ```c
 #include <stdio.h>
@@ -93,8 +95,62 @@ int main (int argc, char* argv[])
       return 0;
 }
 ```
+해당 코드를 다음과 같이 리눅스 명령어를 이용해 컴파일을 한다.
+
+Gnu 컴파일러를 사용하는 경우는 다음과 같이 입력하며,
+```
+gcc main.c -o sinx -lm
+```
+인텔 컴파일러를 사용하는 경우는 다음과 같이 컴파일을 수행한다.
+```
+icc main.c -o sinx
+```
+정상적으로 컴파일이 완료가 되었다면, ```simx``` 실행파일이 생성된다.
+
+추가로 아래와 같이 ```simrc``` 파일과 ```run.sh```파일을 만든다.
+
 ### simrc
 ```
+export PATH=/SYSTEM/gnuplot-4.6.3/bin/bin:$PATH
+```
+
+### run.sh
+```
+#!/bin/bash
+
+./sinx -inp $2
+
+gnuplot plot.gnu
+
+rm -f plot.gnu
+mv result.png result/
+mv result.oneD result/
+```
+
+작성이 완료된 이후 리눅스 soruce 명령어를 이용해 gnuplot의 PATH를 추가하고, 샘플 입력파일을 이용하여, 실행 스크립트를 실행한다. 
 
 ```
+source simrc 
+./run.sh -inp input.dat
+```
+
+###input.dat
+```
+INT1 = 42 ;
+REAL1 = 0.2423 ;
+```
+
+이후 result 폴더에 결과 파일이 정상적으로 생성되는지 확인한다. 이번 예제에서는 ```result.oneD```, ```result.png```파일이 생성된다.
+
+결과 파일이 정상적으로 나오는 것을 확인한 후, 실행에 필요한 파일들만 압축하여 sftp를 이용 자신에 PC에 저장한다.
+ - zip, tar 등의 명령어를 사용하면 된다. 
+
+```
+zip test.zip a.sh sinx simrc
+or
+tar -cvf test.tar a.sh sinx simrc
+```
+
+
+
 
