@@ -23,7 +23,7 @@
            * [C Example](output/c_oned.md)
            * [Fortran Example](output/fortran_oned.md)
        * [imageViewer](output/imageviewer.md)
-           * Gnuplot C example
+           * [Gnuplot C example](output/gnuplot_c_example.md)
 * [사이언스 앱 등록](meta_data/app_register.md)
    * [앱 정보 입력](meta_data/App_Info.md)
    * [실행환경 정보 입력](meta_data/execute_info.md)
