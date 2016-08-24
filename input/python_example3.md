@@ -110,6 +110,7 @@ for line in inputdeck_lines:
   - 이를 다시 ```]```나눈 값의 첫 번째 값 ```.split("]")[0]```은 ```1 3 0``` 이 된다.
   - 이를 다시 공백으로 나누어 배열에 저장하고 [map(int, [배열])](http://stackoverflow.com/questions/7368789/convert-all-strings-in-a-list-to-int) 함수를 통해 문자 값인 각각의 원소를 정수 형으로 변환 시킨다.
 
+[예제 다운 받기](../code/python/case3.py)
 
 
 
@@ -189,3 +190,5 @@ f_inputdeck.close()
 int1 = int(line.split('=')[1].split(';')[0])
 ```
 - ```line = 'INT1 = 42 ;'``` 이며 이를 ```=```로 나눈 ```line.split('=')[1]``` 값의 두 번째 값은 ```'42 ;'``` 가 된다. 이를 다시 ```;```로 나눈 첫번째 값은  ```'42'```인 문자열이 되며, 이를 ```int()``` 를 통해 정수로 형 변환을 시킨다.
+
+[예제 다운 받기](../code/python/case4.py)
