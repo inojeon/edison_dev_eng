@@ -133,7 +133,6 @@ clean :
  - 실행 파일 생성 : make all
  - 생성된 Object 파일 삭제 : make clean
 
-완성된 Makefile과 소스 파일을 가지고 실행파일을 만들어 보면 아래와 같다.
+완성된 Makefile과 소스 파일을 가지고 실행 파일을 만들어 보면 아래와 같다.
 
-
-[](image)
+![](image/image1.png)
