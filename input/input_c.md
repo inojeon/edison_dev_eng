@@ -93,4 +93,4 @@ int main (int argc, char* argv[])
 8. [fclose()](http://www.cplusplus.com/reference/cstdio/fclose/?kw=fclose) 함수를 이용해 파일 포인터의 연결을 끊는다.
 
 
-
+[예제 다운 받기](../code/c/case1.c)
