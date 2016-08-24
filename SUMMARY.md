@@ -34,5 +34,5 @@
    * [앱 업그레이드](meta_data/app_upgrade.md)
 * [개발 관련 tip](edison_simulation.md)
 * [요약](SUMMARY.md)
-* 리눅스 기초
+* [리눅스 기초](linux/linux.md)
 
