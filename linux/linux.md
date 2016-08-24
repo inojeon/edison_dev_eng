@@ -63,8 +63,10 @@ EDISON 플랫폼은 리눅스 기반으로 개발되어 있어서 시뮬레이�
 #include <stdio.h>
 #include "sub1.h"
 #include "sub2.h"
+
 int main()
-{	myprint_sub1();
+{
+    myprint_sub1();
 	myprint_sub2();
 	return 1;
 }
@@ -84,15 +86,15 @@ void myprint_sub1()
 ```
 #####sub2.h
 ```c
-void myprint_sub1();
+void myprint_sub2();
 ```
 #####sub2.c
 ```c
 #include <stdio.h>
-#include "sub1.h"
+#include "sub2.h"
 void myprint_sub1()
 {
-	printf("I am sub1\n");
+	printf("I am sub2\n");
 }
 ```
 
