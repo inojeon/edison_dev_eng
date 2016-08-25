@@ -109,5 +109,3 @@ int main (int argc, char* argv[])
 6. ```args_error_flag``` 가 1인 경우 (커맨드 옵션이 잘못 입력 되었을 경우) 프로그램 종료 한다.
 7. 파일 포인터가 정상적으로 반환되지 않는 경우 ```NULL``` 값을 리턴하고, 파일 포인터 값이 ```NULL```인 경우 에러 매시지를 표시하고 프로그램을 종료한다.
 8. [fclose()](http://www.cplusplus.com/reference/cstdio/fclose/?kw=fclose) 함수를 이용해 파일 포인터의 연결을 끊는다.
-
-[예제 다운 받기](../code/c/case2.c)
