@@ -150,7 +150,3 @@ zip test.zip a.sh sinx simrc
 or
 tar -cvf test.tar a.sh sinx simrc
 ```
-
-[예제 다운 받기 main.c](../code/c/case6.c)
-[예제 다운 받기 run.sh ](../code/c/run.sh)
-[예제 다운 받기 simrc](../code/c/simrc)
