@@ -276,4 +276,3 @@ VECTOR1 = [ 1 0 0 ] ;
       end program
 
 ```
-[예제 다운 받기](../code/fortran/sample4.f)
