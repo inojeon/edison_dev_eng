@@ -244,6 +244,4 @@ int main (int argc, char* argv[])
      
 ```
 
-[예제 다운 받기](../code/c/case4.c)
-
 
