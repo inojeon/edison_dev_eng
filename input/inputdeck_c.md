@@ -31,7 +31,7 @@ VECTOR1 [ 1 0 0 ]
 ```c
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 
 int main (int argc, char* argv[])
 {
@@ -43,17 +43,21 @@ int main (int argc, char* argv[])
       int int1;
       double real1;
       char list1;
-      int vector[3];
+      int vector1[3];
 
       if (argc > 1) {
             for (count = 1; count < argc; count+=2) {
                   if(!strcmp(argv[count],"-inp")) {
                         printf("-inp : %s \n", argv[count+1]);
                         fp_inputdeck = fopen(argv[count+1], "r");
+                        if (fp_inputdeck == NULL) {
+                              printf("Error opening %s file. path : %s \n",argv[count], argv[count+1]);
+                              exit(1);
+                        }
                   } else {
                         printf("Invalid command option: %s\n", argv[count] );
                         args_error_flag = 1;
-                  };
+                  }
             }
             if(args_error_flag == 1) {
                   printf("Check your comand option\n");
@@ -61,10 +65,6 @@ int main (int argc, char* argv[])
             }
       } else {
             printf("Invalid arguments number.\n");
-            exit(1);
-      }
-      if (fp_inputdeck == NULL) {
-            printf("Error opening fp_inputdeck file \n");
             exit(1);
       }
 
@@ -81,18 +81,17 @@ int main (int argc, char* argv[])
             } else if (!strcmp(buf_char, "LIST")) {
                   fscanf(fp_inputdeck, "%s", &list1);
             } else if (!strcmp(buf_char, "VECTOR1")) {
-                  fscanf(fp_inputdeck, "%*s %d %d %d %*s", &vector[0], &vector[1], &vector[2]);
+                  fscanf(fp_inputdeck, "%*s %d %d %d %*s", &vector1[0], &vector1[1], &vector1[2]);
             } else {
-                  printf("%s\n", buf_char);
-                  printf("Inputdeck value read error\n");
+                  printf("Error Invalid value name :: %s\n", buf_char);
                   exit(1);
             }
       }
-      
+
       printf("int1: %d \n", int1);
       printf("real1: %f \n", real1);
-      printf("list1: %c \n", list);
-      printf("vector =  %d %d %d \n",vector[0], vector[1], vector[2]);
+      printf("list1: %c \n", list1);
+      printf("vector1 =  %d %d %d \n",vector1[0], vector1[1], vector1[2]);
 
 
       fclose(fp_inputdeck);
@@ -193,6 +192,10 @@ int main (int argc, char* argv[])
                   if(!strcmp(argv[count],"-inp")) {
                         printf("-inp : %s \n", argv[count+1]);
                         fp_inputdeck = fopen(argv[count+1], "r");
+                        if (fp_inputdeck == NULL) {
+                              printf("Error opening %s file. path : %s \n",argv[count], argv[count+1]);
+                              exit(1);
+                        }                        
                   } else {
                         printf("Invalid command option: %s\n", argv[count] );
                         args_error_flag = 1;
@@ -204,10 +207,6 @@ int main (int argc, char* argv[])
             }
       } else {
             printf("Invalid arguments number.\n");
-            exit(1);
-      }
-      if (fp_inputdeck == NULL) {
-            printf("Error opening fp_inputdeck file \n");
             exit(1);
       }
 
