@@ -78,7 +78,7 @@ int main (int argc, char* argv[])
                   fscanf(fp_inputdeck, "%d", &int1);
             } else if (!strcmp(buf_char, "REAL1")) {
                   fscanf(fp_inputdeck, "%lf", &real1);
-            } else if (!strcmp(buf_char, "LIST")) {
+            } else if (!strcmp(buf_char, "LIST1")) {
                   fscanf(fp_inputdeck, "%s", &list1);
             } else if (!strcmp(buf_char, "VECTOR1")) {
                   fscanf(fp_inputdeck, "%*s %d %d %d %*s", &vector1[0], &vector1[1], &vector1[2]);
@@ -123,7 +123,7 @@ int main (int argc, char* argv[])
                   fscanf(fp_inputdeck, "%d", &int1);
             } else if (!strcmp(buf_char, "REAL1")) {
                   fscanf(fp_inputdeck, "%lf", &real1);
-            } else if (!strcmp(buf_char, "LIST")) {
+            } else if (!strcmp(buf_char, "LIST1")) {
                   fscanf(fp_inputdeck, "%s", &list1);
             } else if (!strcmp(buf_char, "VECTOR1")) {
                   fscanf(fp_inputdeck, "%*s %d %d %d %*s", &vector[0], &vector[1], &vector[2]);
