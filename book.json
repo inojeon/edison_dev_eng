@@ -1,10 +1,9 @@
 {
     "plugins": [
-        "styles-sass",
         "pdf-styling"
     ],
-    "styles": {
-        "pdf": "./styles/pdf.sass"
-    },
-    "pluginsConfig": {}
+    "pluginsConfig": {
+      "pdf-styling": {
+      }
+    }
 }
