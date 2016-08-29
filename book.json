@@ -1,7 +1,8 @@
 {
     "plugins": [
         "pdf-styling",
-        "-theme-bangla"
+        "-theme-bangla",
+        "theme-creative"
     ],
     "pluginsConfig": {}
 }
