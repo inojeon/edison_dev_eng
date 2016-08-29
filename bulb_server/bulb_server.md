@@ -13,7 +13,7 @@
 
 [PuTTY 다운로드](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 후 아래 그림과 같이 접속 
 
-- 호스트 : bulb.edison.re.kr, 포트 : 22002, 프로토콜 : SFTP
+- 호스트 : bulb.edison.re.kr, 포트 : 22002, 프로토콜 : SSH
 - 프록시 : SOCK 5, 프록시 호스트 : access.edison.re.kr, 프록시 포트 8325
 
 ![Putty로 Bulb 접속하기 (ssh)](noname01.png)
