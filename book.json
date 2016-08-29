@@ -1,6 +1,6 @@
 {
-    "plugins": ["styles-less"],
+    "plugins": ["styles-sass"],
     "styles": {
-        "pdf": "./styles/pdf.less"
+        "pdf": "./styles/pdf.sass"
     }
 }
