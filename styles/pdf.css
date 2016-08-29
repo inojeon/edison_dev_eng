@@ -1,5 +1,13 @@
 {
     "pdf": {
         "fontSize": 10
+        
+        
+    },
+    "pdf-styling": {
+      "background": {
+          "fill": "wheat"
+      }
     }
+    
 }
