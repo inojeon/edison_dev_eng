@@ -29,7 +29,7 @@ VECTOR1 [ 1 0 0 ]
 
 #####FORTRAN code example
 ```fortran
-       program sample
+      program sample
 
       CHARACTER(len=16) :: cmd_option_name , value_name
       CHARACTER(len=512) :: inputdeck
@@ -107,7 +107,7 @@ VECTOR1 [ 1 0 0 ]
 
 
 ######주요 변수 설명 
-- ```INT1```, ```REAL1```, ```LIST```, ```VEC(3)``` : Inputdeck 파일에서 각각의 변수 값를 저장하는 변수
+- ```INT1```, ```REAL1```, ```LIST1```, ```VECTOR1(3)``` : Inputdeck 파일에서 각각의 변수 값를 저장하는 변수
 - ```io_status``` : 입력 파일 오픈 시 에러 발생 여부를 저장하는 변수
 
 ######주요 코드 설명
@@ -146,13 +146,14 @@ VECTOR1 [ 1 0 0 ]
             else if ( value_name .eq. "REAL1") then
                   READ(1,*) value_name,  REAL1
                   WRITE(*,*) "REAL1 = ", REAL1
-            else  if ( value_name .eq. "LIST") then
-                  read(1,*) value_name,  LIST
-                  write(*,*) "list = ", LIST
-            else  if ( value_name .eq. "VEC") then
-                  read(1,*) value_name, tempchar, VEC(1),
-     + VEC(2), VEC(3)
-                  write(*,*) "Vector = ", VEC(1), VEC(2), VEC(3)
+            else  if ( value_name .eq. "LIST1") then
+                  read(1,*) value_name,  LIST1
+                  write(*,*) "list = ", LIST1
+            else  if ( value_name .eq. "VECTOR1") then
+                  read(1,*) value_name, tempchar, VECTOR1(1),
+     + VECTOR1(2), VECTOR1(3)
+                  write(*,*) "Vector = ", VECTOR1(1), VECTOR1(2),
+     + VECTOR1(3)
 [4]         else
                   WRITE(*,*) "Inputdeck value read error"
                   stop
@@ -167,7 +168,7 @@ VECTOR1 [ 1 0 0 ]
 1. 장치 번호 1번을 사용해 앞서 open한 입력 파일의 한 줄을 [read()](https://docs.oracle.com/cd/E19957-01/805-4939/6j4m0vnat/index.html)를 사용해 읽는다. 이때 입력 파일의 첫 번째 문자열인 변수 이름을 ```value_name```에 저장한다. 
  - 여기서 파일을 끝까지 다 읽은 경우 파일 read를 하게 되면 ```io``` 값이 0보다 작게 된다. 이를 통해 파일을 끝까지 다 읽었는지 여부를 판단하고 파일을 끝까지 다 읽은 경우 loop문을 빠저나온다.
 2. [read()](https://docs.oracle.com/cd/E19957-01/805-4939/6j4m0vnat/index.html)함수를 이용해 이미 앞에서 읽었던 파일 라인의 변수의 값을 다시 읽기 위해서, [backspace()](https://docs.oracle.com/cd/E19957-01/805-4939/6j4m0vn7j/index.html)를 이용 방금 읽었던 파일 라인을 다시 읽을 수 있도록 파일 포인터를 이동한다.
-3. 입력 파일에서 읽은 변수 이름을 확인하여 저장 함. 벡터 변수의 경우 변수 이름과 값 사이에 있는 ```[``` 문자를 ```tempchar``` 변수에 저장하고, ```VEC(1~3)``` 에 각각의 벡터 원소들을 저장한다.
+3. 입력 파일에서 읽은 변수 이름을 확인하여 저장 함. 벡터 변수의 경우 변수 이름과 값 사이에 있는 ```[``` 문자를 ```tempchar``` 변수에 저장하고, ```VECTOR1(1~3)``` 에 각각의 벡터 원소들을 저장한다.
 4. 원하지 않은 변수 값이 입력되는 경우 이에 대한 에러 메시지를 표시하고 프로그램을 종료
 
 [예제 다운 받기](../code/fortran/sample3.f)
@@ -193,7 +194,7 @@ Inputdeck에서 필요한 정보들만 담기 위해 Inputdeck 설정 값을 다
 ```
 INT1 = 42 ;
 REAL1 = 42.112 ;
-LIST = a ;
+LIST1 = a ;
 VECTOR1 = [ 1 0 0 ] ;
 ```
 
@@ -205,15 +206,15 @@ VECTOR1 = [ 1 0 0 ] ;
 ```fortran
       program sample
 
-      CHARACTER(len=16) :: cmd_option_name , value_name
-      CHARACTER(len=512) :: inputdeck
+      CHARACTER(len=8) :: cmd_option_name , value_name
+      CHARACTER(len=256) :: inputdeck
       INTEGER :: num_of_args, i, io_status
       LOGICAL :: args_error_flag = .false.
 
       INTEGER INT1
       DOUBLE PRECISION REAL1
-      CHARACTER LIST, tempchar
-      INTEGER :: VEC(3)
+      CHARACTER LIST1, tempchar
+      INTEGER :: VECTOR1(3)
 
       num_of_args = iargc()
 
@@ -256,13 +257,14 @@ VECTOR1 = [ 1 0 0 ] ;
             else if ( value_name .eq. "REAL1") then
                   READ(1,*) value_name, tempchar, REAL1
                   WRITE(*,*) "REAL1 = ", REAL1
-            else  if ( value_name .eq. "LIST") then
-                  read(1,*) value_name, tempchar, LIST
-                  write(*,*) "list = ", LIST
-            else  if ( value_name .eq. "VEC") then
-                  read(1,*) value_name, tempchar, tempchar, VEC(1),
-     + VEC(2), VEC(3)
-                  write(*,*) "Vector = ", VEC(1), VEC(2), VEC(3)
+            else  if ( value_name .eq. "LIST1") then
+                  read(1,*) value_name, tempchar, LIST1
+                  write(*,*) "list = ", LIST1
+            else  if ( value_name .eq. "VECTOR1") then
+                  read(1,*) value_name, tempchar, tempchar, VECTOR1(1),
+     + VECTOR1(2), VECTOR1(3)
+                  write(*,*) "Vector = ", VECTOR1(1), VECTOR1(2),
+     + VECTOR1(3)
             else
                   WRITE(*,*) "Inputdeck value read error"
                   stop
