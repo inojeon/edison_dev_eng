@@ -4,7 +4,7 @@
 ```c
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 
 int main (int argc, char* argv[])
 {
@@ -17,9 +17,17 @@ int main (int argc, char* argv[])
                   if(!strcmp(argv[count],"-inp")) {
                         printf("-inp : %s \n", argv[count+1]);
                         fp_inputdeck = fopen(argv[count+1], "r");
+                        if (fp_inputdeck == NULL) {
+                              printf("Error opening %s file. path : %s \n",argv[count], argv[count+1]);
+                              exit(1);
+                        }
                   } else if(!strcmp(argv[count],"-mesh")) {
                         printf("-mesh : %s \n", argv[count+1]);
                         fp_mesh = fopen(argv[count+1], "r");
+                        if (fp_mesh == NULL) {
+                              printf("Error opening %s file. path : %s \n",argv[count], argv[count+1]);
+                              exit(1);
+                        }
                   } else {
                         printf("Invalid command option: %s\n", argv[count] );
                         args_error_flag = 1;
@@ -33,18 +41,12 @@ int main (int argc, char* argv[])
             printf("Invalid arguments number.\n");
             exit(1);
       }
-      if (fp_inputdeck == NULL) {
-            printf("Error opening fp_inputdeck file \n");
-            exit(1);
-      }
-      if (fp_mesh == NULL) {
-            printf("Error opening mesh file \n");
-            exit(1);
-      }
-
-
       fclose(fp_inputdeck);
       fclose(fp_mesh);
+
+
+
+
 
       return 0;
 }
@@ -65,6 +67,9 @@ int main (int argc, char* argv[])
 [3]               if(!strcmp(argv[count],"-inp")) {
                         printf("-inp : %s \n", argv[count+1]);
 [4]                     fp_inputdeck = fopen(argv[count+1], "r");
+
+
+
 [3]               } else if(!strcmp(argv[count],"-mesh")) {
                         printf("-mesh : %s \n", argv[count+1]);
 [4]                     fp_mesh = fopen(argv[count+1], "r");
