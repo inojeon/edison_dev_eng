@@ -67,36 +67,32 @@ int main (int argc, char* argv[])
 [3]               if(!strcmp(argv[count],"-inp")) {
                         printf("-inp : %s \n", argv[count+1]);
 [4]                     fp_inputdeck = fopen(argv[count+1], "r");
-
-
-
+[5]                     if (fp_inputdeck == NULL) {
+                            printf("Error opening %s file. path : %s \n",argv[count], argv[count+1]);
+                            exit(1);
+                        }
 [3]               } else if(!strcmp(argv[count],"-mesh")) {
                         printf("-mesh : %s \n", argv[count+1]);
 [4]                     fp_mesh = fopen(argv[count+1], "r");
-[5]               } else {
+[5]                     if (fp_inputdeck == NULL) {
+                            printf("Error opening %s file. path : %s \n",argv[count], argv[count+1]);
+                            exit(1);
+                        }
+[6]               } else {
                         printf("Invalid command option: %s\n", argv[count] );
                         args_error_flag = 1;
                   };
             }
-            if(args_error_flag == 1) {
+[7]         if(args_error_flag == 1) {
                   printf("Check your comand option\n");
                   exit(1);
             }
-[7]   } else {
+      } else {
             printf("Invalid arguments number.\n");
             exit(1);
       }
-[8]   if (fp_inputdeck == NULL) {
-            printf("Error opening fp_inputdeck file \n");
-            exit(1);
-      }
-[8]   if (fp_mesh == NULL) {
-            printf("Error opening mesh file \n");
-            exit(1);
-      }
 
-
-[9]   fclose(fp_inputdeck);
+[8]   fclose(fp_inputdeck);
       fclose(fp_mesh);
 
       ...
@@ -110,7 +106,7 @@ int main (int argc, char* argv[])
  - 커맨드 옵션을 ```-inp```와 ```-mesh```가 아닌 다른 옵션 명으로 설정 하고 싶다면, 이 부분을 수정하면 된다.  
 4. [fopen()](http://www.cplusplus.com/reference/cstdio/fopen/?kw=fopen) 함수를 이용해 ```argv[count+1]```에 저장되어 있는 경로의 실행 파일을 읽기 전용(```"r"``` 옵션 사용)으로 연다.
  - 파일 포인터를 반환하여 ```*fp_inputdeck```과 ```*fp_mesh``` 파일포인터에 각각 저장한다.
-5. 커맨드 옵션이 잘못 입력된 경우 에러 메시지를 표시하고 ```args_error_flag``` 값을 1로 변경하고 잘못 입력한 커맨드 옵션을 출력
-6. ```args_error_flag``` 가 1인 경우 (커맨드 옵션이 잘못 입력 되었을 경우) 프로그램 종료 한다.
-7. 파일 포인터가 정상적으로 반환되지 않는 경우 ```NULL``` 값을 리턴하고, 파일 포인터 값이 ```NULL```인 경우 에러 매시지를 표시하고 프로그램을 종료한다.
+5. 파일 포인터가 정상적으로 반환되지 않는 경우 ```NULL``` 값을 리턴하고, 파일 포인터 값이 ```NULL```인 경우 에러 매시지를 표시하고 프로그램을 종료한다.
+6. 커맨드 옵션이 잘못 입력된 경우 에러 메시지를 표시하고 ```args_error_flag``` 값을 1로 변경하고 잘못 입력한 커맨드 옵션을 출력
+7. ```args_error_flag``` 가 1인 경우 (커맨드 옵션이 잘못 입력 되었을 경우) 프로그램 종료 한다.
 8. [fclose()](http://www.cplusplus.com/reference/cstdio/fclose/?kw=fclose) 함수를 이용해 파일 포인터의 연결을 끊는다.
