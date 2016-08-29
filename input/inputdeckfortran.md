@@ -21,7 +21,7 @@ Inputdeck에서 필요한 정보들만 담기 위해 Inputdeck 설정 값을 다
 ```
 INT1 42
 REAL1 42.112
-LIST a
+LIST1 a
 VECTOR1 [ 1 0 0 ]
 ```
 
@@ -29,7 +29,7 @@ VECTOR1 [ 1 0 0 ]
 
 #####FORTRAN code example
 ```fortran
-      program sample
+       program sample
 
       CHARACTER(len=16) :: cmd_option_name , value_name
       CHARACTER(len=512) :: inputdeck
@@ -38,8 +38,8 @@ VECTOR1 [ 1 0 0 ]
 
       INTEGER INT1
       DOUBLE PRECISION REAL1
-      CHARACTER LIST, tempchar
-      INTEGER :: VEC(3)
+      CHARACTER LIST1, tempchar
+      INTEGER :: VECTOR1(3)
 
       num_of_args = iargc()
 
@@ -82,13 +82,14 @@ VECTOR1 [ 1 0 0 ]
             else if ( value_name .eq. "REAL1") then
                   READ(1,*) value_name,  REAL1
                   WRITE(*,*) "REAL1 = ", REAL1
-            else  if ( value_name .eq. "LIST") then
-                  read(1,*) value_name,  LIST
-                  write(*,*) "list = ", LIST
-            else  if ( value_name .eq. "VEC") then
-                  read(1,*) value_name, tempchar, VEC(1),
-     + VEC(2), VEC(3)
-                  write(*,*) "Vector = ", VEC(1), VEC(2), VEC(3)
+            else  if ( value_name .eq. "LIST1") then
+                  read(1,*) value_name,  LIST1
+                  write(*,*) "list = ", LIST1
+            else  if ( value_name .eq. "VECTOR1") then
+                  read(1,*) value_name, tempchar, VECTOR1(1),
+     + VECTOR1(2), VECTOR1(3)
+                  write(*,*) "Vector = ", VECTOR1(1), VECTOR1(2),
+     + VECTOR1(3)
             else
                   WRITE(*,*) "Inputdeck value read error"
                   stop
