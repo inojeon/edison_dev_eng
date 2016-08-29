@@ -163,7 +163,7 @@ Inputdeck에서 필요한 정보들만 담기 위해 Inputdeck 설정 값을 다
 ```
 INT1 = 42 ;
 REAL1 = 42.112 ;
-LIST = a ;
+LIST1 = a ;
 VECTOR1 = [ 1 0 0 ] ;
 ```
 
@@ -220,7 +220,7 @@ int main (int argc, char* argv[])
                   fscanf(fp_inputdeck, "%*s %d %*s", &int1);
             } else if (!strcmp(buf_char, "REAL1")) {
                   fscanf(fp_inputdeck, "%*s %lf %*s", &real1);
-            } else if (!strcmp(buf_char, "LIST")) {
+            } else if (!strcmp(buf_char, "LIST1")) {
                   fscanf(fp_inputdeck, "%*s %s %*s", &list1);
             } else if (!strcmp(buf_char, "VECTOR1")) {
                   fscanf(fp_inputdeck, "%*s %*s %d %d %d %*s %*s", &vector1[0], &vector1[1], &vector1[2]);
