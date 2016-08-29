@@ -31,7 +31,7 @@ int main (int argc, char* argv[])
                   } else {
                         printf("Invalid command option: %s\n", argv[count] );
                         args_error_flag = 1;
-                  };
+                  }
             }
             if(args_error_flag == 1) {
                   printf("Check your comand option\n");
@@ -81,7 +81,7 @@ int main (int argc, char* argv[])
 [6]               } else {
                         printf("Invalid command option: %s\n", argv[count] );
                         args_error_flag = 1;
-                  };
+                  }
             }
 [7]         if(args_error_flag == 1) {
                   printf("Check your comand option\n");
