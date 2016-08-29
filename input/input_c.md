@@ -56,16 +56,16 @@ int main (int argc, char* argv[])
 [3]               if(!strcmp(argv[count],"-inp")) {
                         printf("-inp : %s \n", argv[count+1]);
 [4]                     fp_inputdeck = fopen(argv[count+1], "r");
-[7]                     if (fp_inputdeck == NULL) {
+[5]                     if (fp_inputdeck == NULL) {
                             printf("Error opening %s file. path : %s \n",argv[count], argv[count+1]);
                             exit(1);
                         }
-[5]               } else {
+[6]               } else {
                         printf("Invalid command option: %s\n", argv[count] );
                         args_error_flag = 1;
                   };
             }
-[6]         if(args_error_flag == 1) {
+[7]         if(args_error_flag == 1) {
                   printf("Check your comand option\n");
                   exit(1);
             }
