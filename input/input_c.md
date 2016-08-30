@@ -1,6 +1,6 @@
 # Code example
 
-### Case1.c
+### [Case1.c](https://github.com/inojeon/edison_dev/blob/master/c/case1.c)
 ```c
 #include <stdio.h>
 #include <stdlib.h>
