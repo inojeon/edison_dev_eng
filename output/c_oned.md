@@ -24,6 +24,10 @@ int main (int argc, char* argv[])
                   if(!strcmp(argv[count],"-inp")) {
                         printf("-inp : %s \n", argv[count+1]);
                         fp_inputdeck = fopen(argv[count+1], "r");
+                        if (fp_inputdeck == NULL) {
+                              printf("Error opening fp_inputdeck file \n");
+                              exit(1);
+                        }
                   } else {
                         printf("Invalid command option: %s\n", argv[count] );
                         args_error_flag = 1;
@@ -35,10 +39,6 @@ int main (int argc, char* argv[])
             }
       } else {
             printf("Invalid arguments number.\n");
-            exit(1);
-      }
-      if (fp_inputdeck == NULL) {
-            printf("Error opening fp_inputdeck file \n");
             exit(1);
       }
 
