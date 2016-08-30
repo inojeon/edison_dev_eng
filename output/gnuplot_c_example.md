@@ -1,6 +1,6 @@
 # Gnuplot C example
 
-이번 예제는 실행파일과 실행 파일을 동작시키는 bash 쉘 스크립트 파일 그리고 gnuplot의 PATH export 명령어를 저장하고 있는 ```simrc```파일이 필요하다. 실행 파일에 대한 c소스 코드 파일은 아래와 같다. 
+이번 예제는 실행 파일과 gnuplot의 PATH export 명령어를 저장하고 있는 ```simrc```파일이 필요하다. 실행 파일에 대한 c소스 코드 파일은 아래와 같다. 
 
 ### Case6.c 
 ```c
@@ -117,31 +117,18 @@ icc main.c -o sinx
 ```
 정상적으로 컴파일이 완료가 되었다면, ```simx``` 실행파일이 생성된다.
 
-추가로 아래와 같이 ```simrc``` 파일과 ```run.sh```파일을 만든다.
+추가로 아래와 같이 ```simrc``` 파일을 만든다.
 
 ### simrc
 ```
 export PATH=/SYSTEM/gnuplot-4.6.3/bin/bin:$PATH
 ```
 
-### run.sh
-```
-#!/bin/bash
-
-./sinx -inp $2
-
-gnuplot plot.gnu
-
-rm -f plot.gnu
-mv result.png result/
-mv result.oneD result/
-```
-
 작성이 완료된 이후 리눅스 soruce 명령어를 이용해 gnuplot의 PATH를 추가하고, 샘플 입력파일을 이용하여, 실행 스크립트를 실행한다. 
 
 ```
 source simrc 
-./run.sh -inp input.dat
+./sinx -inp input.dat
 ```
 
 ###input.dat
@@ -156,7 +143,7 @@ REAL1 = 0.2423 ;
  - zip, tar 등의 명령어를 사용하면 된다. 
 
 ```
-zip test.zip a.sh sinx simrc
+zip test.zip sinx simrc
 or
-tar -cvf test.tar a.sh sinx simrc
+tar -cvf test.tar sinx simrc
 ```
