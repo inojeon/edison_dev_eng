@@ -1,6 +1,6 @@
 # fortran example
 
-##### FORTRAN Code example
+### Case2.f
 
 ```fortran
       program sample
