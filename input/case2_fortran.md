@@ -1,4 +1,4 @@
-# fortran example
+# Fortran example
 
 ### Case2.f
 
