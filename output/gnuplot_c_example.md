@@ -65,6 +65,8 @@ int main (int argc, char* argv[])
             }
       }
 
+      fclose(fp_inputdeck);
+
       printf("int1: %d \n", int1);
       printf("real1: %f \n", real1);
 
@@ -84,8 +86,7 @@ int main (int argc, char* argv[])
             y = int1*sin( x - real1 );
             fprintf(fp_out,"%e %e\n",x, y);
       }
-
-      fclose(fp_inputdeck);
+      fclose(fp_out);
 
       fp_gnuplot = fopen("plot.gnu","w");
 
@@ -95,6 +96,11 @@ int main (int argc, char* argv[])
       fprintf(fp_gnuplot,"set yrange[-50:50]\n");
       fprintf(fp_gnuplot,"plot 'result.oneD' using 1:2 with lines\n");
       fclose(fp_gnuplot);
+      system("gnuplot plot.gnu");
+
+      system("rm -f plot.gnu");
+      system("mv result.png result/");
+      system("mv result.oneD result/");
 
       return 0;
 }
