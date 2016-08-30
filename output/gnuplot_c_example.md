@@ -27,6 +27,10 @@ int main (int argc, char* argv[])
                   if(!strcmp(argv[count],"-inp")) {
                         printf("-inp : %s \n", argv[count+1]);
                         fp_inputdeck = fopen(argv[count+1], "r");
+                        if (fp_inputdeck == NULL) {
+                              printf("Error opening %s file. path : %s \n",argv[count], argv[count+1]);
+                              exit(1);
+                        } 
                   } else {
                         printf("Invalid command option: %s\n", argv[count] );
                         args_error_flag = 1;
