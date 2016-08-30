@@ -25,7 +25,7 @@ int main (int argc, char* argv[])
                         printf("-inp : %s \n", argv[count+1]);
                         fp_inputdeck = fopen(argv[count+1], "r");
                         if (fp_inputdeck == NULL) {
-                              printf("Error opening fp_inputdeck file \n");
+                              printf("Error opening %s file. path : %s \n",argv[count], argv[count+1]);
                               exit(1);
                         }
                   } else {
