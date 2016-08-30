@@ -1,6 +1,6 @@
-# c example
+# c example 
 
-
+### Case2.c
 ```c
 #include <stdio.h>
 #include <stdlib.h>
