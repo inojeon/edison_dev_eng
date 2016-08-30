@@ -27,7 +27,7 @@ VECTOR1 [ 1 0 0 ]
 
 
 
-####Code example
+####Code example : Case3.c
 ```c
 #include <stdio.h>
 #include <stdlib.h>
@@ -169,7 +169,7 @@ VECTOR1 = [ 1 0 0 ] ;
 
 
 
-####Code example
+####Code example : Case4.c
 다음과 같이 생성된 입력 파일을 읽어와 같은 이름의 변수를 생성해 저장하는 코드이다. case 1의 코드와 크게 다르지 않으며, ```%*s``` 이용해 변수 이름과 변수 값 사이에 있는 ```=``` 와 변수 끝에 있는 ```;```을 파일에서 읽기만 하고, 따로 저장하지 않는 부분을 추가하였다. 
 
 ```c
