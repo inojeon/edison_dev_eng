@@ -58,7 +58,7 @@ int main (int argc, char* argv[])
                   exit(1);
             }
       }
-
+      fclose(fp_inputdeck);
       printf("int1: %d \n", int1);
       printf("real1: %f \n", real1);
 
@@ -78,7 +78,7 @@ int main (int argc, char* argv[])
             fprintf(fp_out,"%10.3f  %10.3f\n",x, y);
       }
 
-      fclose(fp_inputdeck);
+      fclose(fp_out);
 
       return 0;
 }
@@ -126,7 +126,7 @@ int main (int argc, char* argv[])
             fprintf(fp_out,"%10.3f  %10.3f\n",x, y);
       }
 
-      fclose(fp_inputdeck);
+      fclose(fp_out);
 ```
  - t=0 부터 SIZE 까지 for문을 수행한다. 있대 $$-2*pi$$에서 $$2*pi$$ 까지 SIZE등분으로 일정하게 나눈 값을 x에 저장하고, 이 x값에 대한 $$a*sin(t+b)$$ 결과 값을 y에 저장한 뒤 각각 파일에 써준다.
 - 이때 저장하는 데이터의 규칙은 10진수 형태로 총 10자리를 가지고, 소수점 아래로는 3자리를 가지도록 저장한다.
