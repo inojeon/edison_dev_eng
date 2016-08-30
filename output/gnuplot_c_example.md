@@ -2,7 +2,7 @@
 
 이번 예제는 실행파일과 실행 파일을 동작시키는 bash 쉘 스크립트 파일 그리고 gnuplot의 PATH export 명령어를 저장하고 있는 ```simrc```파일이 필요하다. 실행 파일에 대한 c소스 코드 파일은 아래와 같다. 
 
-### main.c 
+### Case6.c 
 ```c
 #include <stdio.h>
 #include <stdlib.h>
