@@ -27,7 +27,7 @@ VECTOR1 [ 1 0 0 ]
 
 
 
-####Code example
+####Code example : Case3.py
 ```python
 #!/usr/local/bin/python
 
@@ -138,7 +138,7 @@ LIST = a ;
 VECTOR1 = [ 1 0 0 ] ;
 ```
 
-####Code example
+####Code example : Case4.py
 다음과 같이 생성된 입력 파일을 읽어와 같은 이름의 변수를 생성해 저장하는 코드이다. case 1의 코드와 크게 다르지 않으며, 벡터가 아닌 변수에 대해서는 ```split('=')``` 과 ```split(';')```을 이용해 변수 값을 저장한다. 
 
 ```python
