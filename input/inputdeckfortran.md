@@ -1,7 +1,7 @@
 # inputdeck_fortran
 
 
-#### Case 3.1. Inputdeck case study 1
+### Case 3.1. Inputdeck case study 1
 
 다음과 같이 정수형 변수 1개, 실수형 변수 1개, 리스트형 변수 1개, 3차원 벡터 1개를 받는 Inputdeck를 생성하였다. 
 
@@ -27,7 +27,7 @@ VECTOR1 [ 1 0 0 ]
 
 
 
-#####FORTRAN code example
+####FORTRAN code example : Case3.f
 ```fortran
       program sample
 
@@ -174,7 +174,7 @@ VECTOR1 [ 1 0 0 ]
 [예제 다운 받기](../code/fortran/sample3.f)
 
 
-#### Case 3.2. Inputdeck case study 2
+### Case 3.2. Inputdeck case study 2
 
 다음과 같이 정수형 변수 1개, 실수형 변수 1개, 리스트형 변수 1개, 3차원 벡터 1개를 받는 Inputdeck를 생성하였다. 
 
@@ -200,7 +200,7 @@ VECTOR1 = [ 1 0 0 ] ;
 
 
 
-#####FORTRAN code example
+####FORTRAN code example : Case4.f
 위 케이스에서 생성된 입력 파일을 읽어와 같은 이름의 변수를 생성해 저장하는 코드이다. case 1의 코드와 크게 다르지 않으며, ```tempchar``` 변수를 이용해 변수 이름과 변수 값 사이에 있는 ```=``` 을 처리하는 부분을 추가하였다. 
 
 ```fortran
