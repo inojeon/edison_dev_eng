@@ -34,6 +34,6 @@
    * [앱 테스트](meta_data/app_test.md)
    * [앱 업그레이드](meta_data/app_upgrade.md)
 * [개발 관련 tip](edison_simulation.md)
-   * 프로그램 예제
+* 프로그램 예제
 * [요약](SUMMARY.md)
 
