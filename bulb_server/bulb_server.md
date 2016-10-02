@@ -23,7 +23,7 @@
 - [리눅스에서 비밀번호 변경하기](https://www.linux.co.kr/home/lecture/index.php?cateNo=&secNo=&theNo=&leccode=247)
 
  
-#### FileZilla Bulb 접속하기 (ftp)
+#### FileZilla Bulb 접속하기 (sftp)
 
 [File Zilla 다운로드](https://filezilla-project.org/) 후 아래 그림과 같이 접속 
 - 호스트 : bulb.edison.re.kr, 포트 : 22002, 프로토콜 : SFTP
@@ -34,3 +34,14 @@
 ![호스트 : bulb.edison.re.kr, 포트 : 22002, 프로토콜 : SFTP
 ](noname02.png)
 ![프록시 : SOCK 5, 프록시 호스트 : access.edison.re.kr, 프록시 포트 8325](noname03.png)
+
+
+ 
+#### Mac OS Terminal로 bulb 접속하기  (ssh)
+
+터미널 실행 후 아래 커멘드 입력
+
+```
+ssh -o ProxyCommand='nc -x access.edison.re.kr:8325 %h %p' [User_id]@bulb.edison.re.kr -p 22002
+```
+**[User_id]** 부분의 본인의 아이디를 입력하고 커멘드 실행
